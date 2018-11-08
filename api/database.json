@@ -1,0 +1,95 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "user@penguin.com",
+      "password": "penguin",
+      "displayName": "Penguin User"
+    },
+    {
+      "id": 2,
+      "email": "user2@penguin.com",
+      "password": "penguin",
+      "displayName": "Penguin User 2"
+    }
+  ],
+  "relationships": [
+    {
+      "id": 1,
+      "userId": 1,
+      "friendId": 2
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "userId": 1,
+      "name": "3rd Annual Egg Hatching",
+      "location": "The Hatchery",
+      "date": "2018-12-05"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "name": "4th Annual Egg Hatching",
+      "location": "The Hatchery",
+      "date": "2019-12-07"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "userId": 1,
+      "dueBy": "2018-11-19",
+      "name": "Wash Car",
+      "status": 0
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "dueBy": "2018-11-10",
+      "name": "Grocery Shopping",
+      "status": 1
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "dueBy": "2018-11-04",
+      "name": "Finish Book 4",
+      "status": 2
+    }
+  ],
+  "news" : [
+    {
+      "id": 1,
+      "userId": 1,
+      "title": "Nutshell Launches!",
+      "summary": "Nutshell launched today! Find your waddle!",
+      "timestamp": "2018-11-08",
+      "url": "http://google.com"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "title": "Nutshell registers millionth user!!!",
+      "summary": "Nutshell has way too many waddles. The icebergs are melting.",
+      "timestamp": "2018-11-08",
+      "url": "http://clubpenguin.com"
+    }
+
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "userId": 1,
+      "text": "First!",
+      "isEdited": false
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "text": "Don't be that kind of penguin!",
+      "isEdited": true
+    }
+  ]
+}
