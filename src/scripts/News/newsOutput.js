@@ -6,28 +6,27 @@
 import Form from "./formBuilder"
 import getFormValues from "./listeners"
 
-
-
 let newsInputs = [
-    ["text", "input1", `${this.title}`],
-    ["text", "input2", `${this.summary}`],
-    ["url", "input3", `${this.url}`],
-    ["text", "timestamp", `${this.timestamp}`]
-    ["submit", "formSubmit", "submit"]]
+  ["text", "input1", "Title"],
+  ["text", "input2", "Summary"],
+  ["url", "input3", "URL"],
+  ["text", "timestamp", "Timestamp"],
+  ["submit", "formSubmit", "submit"]]
 
 // Edit
 
 function editNews() {
   // Opens edit fields FORM
-  let newsEditor = new Form(title, htmlId, newsInputs)
+  let newsEditor = new Form("Edit", "news-editor", newsInputs)
   let newsEdit = newsEditor.build()
-  newsEdit.render("ul.collection")
+  newsEdit.render("body")
 }
 
 let editButton = document.querySelector(".edit-button")
 
-editButton.addEventListener(e => {
+editButton.addEventListener("click", function () {
   editNews()
+  console.log("Edit button clicked")
 })
 
 

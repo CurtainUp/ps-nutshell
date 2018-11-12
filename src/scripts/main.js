@@ -10,9 +10,9 @@ testNews.buildNewsElement()
 testNews2.buildNewsElement()
 
 let newsInputs = [
-  ["text", "input1", "Title"],
-  ["text", "input2", "Summary"],
-  ["url", "input3", "URL"],
+  ["text", "title", "Title"],
+  ["text", "summary", "Summary"],
+  ["url", "url", "URL"],
   ["text", "timestamp", "Timestamp"],
   ["submit", "formSubmit", "submit"]]
 
@@ -21,6 +21,8 @@ let newsInputs = [
 function editNews() {
   // Opens edit fields FORM
   let newsEditor = new Form("Edit", "news-editor", newsInputs)
+  let titleVal = document.querySelector("input.title")
+  titleVal.value = "hi"
   let newsEdit = newsEditor.build()
   newsEdit.render("body")
 }
