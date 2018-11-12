@@ -27,62 +27,55 @@
     </nav>
   </div>
   <article class="container main-container">
-    <section class="container events" id="formContainer">
+    <section class="container" id="formContainer">
 
       <div class="row">
         <form class="col s8 push-s2 grey lighten-4">
           <div class="row">
-            <h3 class="header center">Save an Event</h3>
+            <h3 class="header">Save a News Article</h3>
           </div>
 
           <div class="row">
             <div class="input-field col s12">
-              <input id="name" type="text" class="validate materialize-input">
-              <label class="active" for="name">Event Name</label>
+              <input id="title" type="text" class="validate materialize-input">
+              <label class="active" for="title">Article Title</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="location" type="text" class="materialize-textarea">
-              <label for="location">Location</label>
+              <textarea id="synopsis" class="materialize-textarea"></textarea>
+              <label for="synopsis">Synopsis</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="date" type="date" class="validate materialize-input">
-              <label class="active" for="date">Date</label>
+              <input id="url" type="url" class="validate materialize-input">
+              <label class="active" for="url">URL</label>
             </div>
           </div>
-          <a class="waves-effect waves-light btn-large">Save</a>
+          <a class="waves-effect waves-light btn-large">Button</a>
         </form>
       </div>
 
     </section>
 
-    <section class="container events">
+    <section class="container">
       <ul class="collection">
         <li class="collection-item avatar">
-          <i class="material-icons circle">date_range</i>
-          <span class="event grey-text text-darken-1">2018-11-25</span>
-          <h5> 3rd Annual Egg Hatching</h5>
-          <p>The Hatchery</p>
-          <div class="secondary-content">
-            <a class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">edit</i></a>
-            <a class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">delete_forever</i></a>
-          </div>
+          <i class="material-icons circle">subtitles</i>
+          <span class="title">Article Title</span>
+          <p> Synopsis
+          </p>
         </li>
         <li class="collection-item avatar">
-          <i class="material-icons circle">date_range</i>
-          <span class="event grey-text text-darken-1">2018-12-25</span>
-          <h5> Christmas</h5>
-          <p>Everywhere</p>
-          <div class="secondary-content">
-            <a class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">edit</i></a>
-            <a class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">delete_forever</i></a>
-          </div>
+          <i class="material-icons circle">subtitles</i>
+          <span class="title">Article Title</span>
+          <p> Synopsis
+          </p>
         </li>
       </ul>
     </section>
+
   </article>
 
 
