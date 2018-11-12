@@ -3,3 +3,9 @@
 .landing-page .btn-large {
   margin: 10px;
 }
+
+/*---------- Messages ----------*/
+
+.message__username {
+  font-weight: bold;
+}
