@@ -31,26 +31,11 @@ class News {
 
 //-----TEST CODE: Copy the following to main.js test functionality------------
 // import News from "./News/news"
-// let testNews = new News("Nutshell News", "all the happenings at nutshell HQ", "November 10, 2018", "https://www.vox.com")
-// let testNews2 = new News("Second Time Around", "People want MORE nutshell", "November 11, 2018", "https://www.vox.com")
+// let testNews = new News("Nutshell News", "all the happenings at nutshell HQ", "November 10, 2018", "https://www.vox.com", 1)
+// let testNews2 = new News("Second Time Around", "People want MORE nutshell", "November 11, 2018", "https://www.vox.com", 2)
 
 // testNews.buildNewsElement()
 // testNews2.buildNewsElement()
 // -----------END TEST CODE-----------------------------
-
-// ***Testing to add multiple instances to DOM at once for after fetch.***
-// ***The following code works if buildNewsElement function is outside of News class***
-
-// let allNews = []
-// allNews.push(testNews, testNews2)
-// console.log(allNews)
-
-// function buildMultipleNewsElements(prop) {
-//   prop.forEach(thing => {
-//     buildNewsElement(thing)
-//   })
-// }
-
-// buildMultipleNewsElements(allNews)
 
 export default News
