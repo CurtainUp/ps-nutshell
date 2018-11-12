@@ -7,16 +7,15 @@ const userSession = {
     this.currentUser = window.sessionStorage.getItem("id")
   },
 
-  getUser(){
+  getUser() {
     this.currentUser = window.sessionStorage.getItem("id")
     return window.sessionStorage.getItem("id")
   },
 
-  logOutUser(){
+  logOutUser() {
     window.sessionStorage.clear()
     this.currentUser = null
   }
 }
 
 export default userSession
-import userSession from "./sessionStorage"
