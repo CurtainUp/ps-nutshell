@@ -71,7 +71,9 @@ function buildFormElement(inputType, id, labelText) {
     } else if (inputType === "textarea") {
       input = new DOMComponent("textarea", {name: id, id: id, required: true})
     } else if (inputType === "submit") {
-      input = new DOMComponent("button", {type: inputType, className: "btn-large waves-effect waves-light"}, labelText)
+      input = new DOMComponent("button", {type: inputType, id: id, className: "btn-large waves-effect waves-light"}, labelText)
+    } else if (inputType === "button") {
+      input = new DOMComponent("button", {className: "btn-large waves-effect waves-light", id: id}, labelText)
     } else {
       input = new DOMComponent("input", {type: inputType, id: id, name: id, required: true})
     }
