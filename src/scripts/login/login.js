@@ -1,6 +1,6 @@
 import Form from "./../formBuilder"
 import landingPage from "./landing"
-import getFormValues from "./../listeners"
+import getFormValues from "../getFormValues"
 import validate from "./../validate"
 
 const mainContainer = document.querySelector(".main-container")
