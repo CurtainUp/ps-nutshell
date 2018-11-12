@@ -1,6 +1,7 @@
 import Form from "./../formBuilder"
 import landingPage from "./landing"
 import getFormValues from "./../listeners"
+import validate from "./../validate"
 
 const mainContainer = document.querySelector(".main-container")
 
@@ -27,10 +28,9 @@ function loginPage() {
   /* Submit Button Functionality */
   document.querySelector("#loginForm").addEventListener("click", e => {
     e.preventDefault()
-    console.log(e)
     if(e.target.id === "loginBtn") {
       let loginValues = getFormValues(e.target.parentNode.parentNode.parentNode)
-      console.log("object to post", loginValues)
+      validate.existingUser(loginValues)
     }
   })
 
