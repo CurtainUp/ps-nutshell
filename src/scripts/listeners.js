@@ -16,11 +16,13 @@ let getFormValues = (target) => {
 
   // iterate through nodelist and assign each input id as the key and the input value as the value in the object
   formDivs.forEach((input) => {
-    formValuesObj[input.firstElementChild.id] = input.firstElementChild.value
+    let element = input.querySelector("input")
+    if(element) {
+      formValuesObj[element.id] = element.value
+    }
   })
   return formValuesObj
 }
-
 
 /*
 example of how we would attach the event listener to a form and pass the current target of the event to

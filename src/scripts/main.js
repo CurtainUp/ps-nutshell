@@ -1,2 +1,5 @@
-import getFormValues from "./listeners"
+import landingPage from "./login/landing"
+
+landingPage()
+
 
