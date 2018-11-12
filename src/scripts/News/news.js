@@ -19,9 +19,9 @@ class News {
     let newsTitle = new DOMComponent("span", { classList: "title" }, `<a href=${this.url}>${this.title}</a>`)
     let newsSummary = new DOMComponent("p", { classList: "summary" }, `${this.summary}`)
     let newsTime = new DOMComponent("p", { classList: "time" }, `${this.timestamp}`)
-    let newsEdit = new DOMComponent("button", { classList: "edit-button"}, "Edit")
-    let newsSave = new DOMComponent("button", { classList: "save-button"}, "Save")
-    let newsDelete = new DOMComponent("button", { classList: "delete-button"}, "Delete")
+    let newsEdit = new DOMComponent("button", { classList: "edit-button btn-small waves-effect waves-light"}, "Edit")
+    let newsSave = new DOMComponent("button", { classList: "save-button btn-small waves-effect waves-light"}, "Save")
+    let newsDelete = new DOMComponent("button", { classList: "delete-button btn-small waves-effect waves-light"}, "Delete")
 
     let newsSection = new DOMComponent("li", { classList: "collection-item avatar" }, newsIcon, newsTitle, newsSummary, newsTime, newsEdit, newsSave, newsDelete)
     console.log(newsSection)
