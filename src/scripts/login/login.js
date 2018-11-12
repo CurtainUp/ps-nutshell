@@ -33,7 +33,6 @@ function loginPage() {
       validate.existingUser(loginValues)
     }
   })
-
 }
 
 export default loginPage
