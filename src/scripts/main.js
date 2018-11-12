@@ -1,13 +1,5 @@
-import getFormValues from "./listeners"
-import validate from "./validate"
+import landingPage from "./login/landing"
 
-
-validate.existingUser({
-  "email": "user@penguin.com",
-  "password": "penguin"
-})
-
-
-
-
-
+if(window.sessionStorage.length === 0) {
+  landingPage()
+}
