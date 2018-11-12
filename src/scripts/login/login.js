@@ -28,9 +28,11 @@ function loginPage() {
   /* Submit Button Functionality */
   document.querySelector("#loginForm").addEventListener("click", e => {
     e.preventDefault()
-    if(e.target.id === "loginBtn") {
+    if (e.target.id === "loginBtn") {
       let loginValues = getFormValues(e.target.parentNode.parentNode.parentNode)
       validate.existingUser(loginValues)
+      let navButtons = document.querySelectorAll(".hide")
+      navButtons.forEach((item) => { item.className = "" })
     }
   })
 }
