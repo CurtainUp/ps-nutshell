@@ -18,11 +18,13 @@ class Message {
   build() {
 
     let msgAttr = {
-      classList: "collection-item valign-wrapper message test"
+      classList: "collection-item valign-wrapper message test",
+      id: `message-${this.id}`
     }
     if (userSession.getUser() === this.userId) {
       msgAttr = {
-        classList: "collection-item valign-wrapper message message--currentUser right-align"
+        classList: "collection-item valign-wrapper message message--currentUser right-align",
+        id: `message-${this.id}`
       }
     }
 

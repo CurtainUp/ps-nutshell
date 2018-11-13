@@ -1,3 +1,6 @@
+import API from "../api";
+import clear from "../clear"
+import loadMessages from "./msgOutput"
 /*
   author: Sebastian
   purpose: Contains methods that are in charge of letting the active user edit their messages.
@@ -21,7 +24,7 @@ const editMsg = {
         } else {
           editToggle.textContent = "Edit"
           textEl.classList.remove("hide")
-          message.querySelector("#message__input").remove()
+          message.querySelector(".edit-message__wrapper").remove()
         }
 
       })
@@ -29,7 +32,8 @@ const editMsg = {
   },
 
   addInput(container) {
-    let fragment = document.createDocumentFragment()
+    let wrapper = document.createElement("div")
+    wrapper.classList = "edit-message__wrapper"
 
     let input = document.createElement("input")
     input.setAttribute("type", "text")
@@ -41,13 +45,32 @@ const editMsg = {
     let icon = document.createElement("i")
     icon.classList = "material-icons"
     icon.textContent = "send"
+    icon.addEventListener("click", e => {
+      editMsg.saveEdit(e)
+
+    })
 
     submit.appendChild(icon)
 
-    fragment.appendChild(input)
-    fragment.appendChild(submit)
+    wrapper.appendChild(input)
+    wrapper.appendChild(submit)
 
-    container.appendChild(fragment)
+    container.appendChild(wrapper)
+  },
+
+  saveEdit(e) {
+    let message = e.target.parentNode.parentNode.parentNode.parentNode
+    let id = message.id.split("-")[1]
+    let messageObj = {
+      text: message.querySelector("#message__input").value,
+      isEdited: true
+    }
+
+    API.editData("messages", messageObj, id)
+      .then(() => {
+        clear()
+        loadMessages()
+      })
   }
 }
 
