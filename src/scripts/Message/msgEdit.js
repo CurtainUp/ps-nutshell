@@ -2,7 +2,6 @@
   author: Sebastian
   purpose: Contains methods that are in charge of letting the active user edit their messages.
 */
-import DOMComponent from "nss-domcomponent"
 
 const editMsg = {
 
@@ -30,10 +29,25 @@ const editMsg = {
   },
 
   addInput(container) {
+    let fragment = document.createDocumentFragment()
+
     let input = document.createElement("input")
     input.setAttribute("type", "text")
     input.setAttribute("id", "message__input")
-    container.appendChild(input)
+
+    let submit = document.createElement("a")
+    submit.classList = "btn-floating pulse waves-effect waves-light right"
+
+    let icon = document.createElement("i")
+    icon.classList = "material-icons"
+    icon.textContent = "send"
+
+    submit.appendChild(icon)
+
+    fragment.appendChild(input)
+    fragment.appendChild(submit)
+
+    container.appendChild(fragment)
   }
 }
 
