@@ -22,9 +22,7 @@ class News {
     let newsEdit = new DOMComponent("button", { classList: "edit-button btn-small waves-effect waves-light"}, "Edit")
     let newsSave = new DOMComponent("button", { classList: "save-button btn-small waves-effect waves-light"}, "Save")
     let newsDelete = new DOMComponent("button", { classList: "delete-button btn-small waves-effect waves-light"}, "Delete")
-
     let newsSection = new DOMComponent("li", { classList: "collection-item avatar" }, newsIcon, newsTitle, newsSummary, newsTime, newsEdit, newsSave, newsDelete)
-    console.log(newsSection)
     newsSection.render("ul.collection")
   }
 }

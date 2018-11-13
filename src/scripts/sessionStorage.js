@@ -1,6 +1,7 @@
 
 const userSession = {
   currentUser: null,
+  currentPage: null,
 
   logInUser(id) {
     window.sessionStorage.setItem("id", id)
@@ -15,6 +16,17 @@ const userSession = {
   logOutUser() {
     window.sessionStorage.clear()
     this.currentUser = null
+    this.currentPage = null
+  },
+
+  setCurrentPage(pageId) {
+    window.sessionStorage.setItem("currentPage", pageId)
+    this.currentPage = window.sessionStorage.getItem("currentPage")
+  },
+
+  getCurrentPage() {
+    this.currentPage = window.sessionStorage.getItem("currentPage")
+    return window.sessionStorage.getItem("currentPage")
   }
 }
 

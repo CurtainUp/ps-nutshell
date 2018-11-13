@@ -3,46 +3,33 @@
   purpose: takes individual news elements and builds output fragment for entire news section
 */
 
-import Form from "./formBuilder"
-import getFormValues from "./listeners"
+import DOMComponent from "nss-domcomponent"
+import newArticleListener from "./newsButtons"
+// import editListener from "./newsButtons"
 
-let newsInputs = [
-  ["text", "input1", "Title"],
-  ["text", "input2", "Summary"],
-  ["url", "input3", "URL"],
-  ["text", "timestamp", "Timestamp"],
-  ["submit", "formSubmit", "submit"]]
-
-// Edit
-
-function editNews() {
-  // Opens edit fields FORM
-  let newsEditor = new Form("Edit", "news-editor", newsInputs)
-  let newsEdit = newsEditor.build()
-  newsEdit.render("body")
+// Loads News Page
+function loadNews() {
+  let createArticleBtn = new DOMComponent("button", { classList: "article-button btn-large waves-effect waves-light" }, "Add Article")
+  createArticleBtn.render("article.container")
+  newArticleListener()
+  // add code that fetches user's articles, then creates an instance of News class for each, then run buildNewsElement on each
 }
 
-let editButton = document.querySelector(".edit-button")
+export default loadNews
 
-editButton.addEventListener("click", function () {
-  editNews()
-  console.log("Edit button clicked")
-})
+// function saveNews() {
+//   // If no existing id, POST to database
+//   // If already existing, PATCH updated fields to database
+//   // then
+//   // GET all news items
+//   // Render dom
+// }
 
-
-function saveNews() {
-  // If no existing id, POST to database
-  // If already existing, PATCH updated fields to database
-  // then
-  // GET all news items
-  // Render dom
-}
-
-function deleteNews() {
-  // DELETE instance (id)
-  // GET all news items
-  // Render dom
-}
+// function deleteNews() {
+//   // DELETE instance (id)
+//   // GET all news items
+//   // Render dom
+// }
 
 // ***Testing to add multiple instances to DOM at once for after fetch.***
 // ***The following code works if buildNewsElement function is outside of News class***
