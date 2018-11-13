@@ -1,6 +1,12 @@
+/*
+  author(s): Elyse
+  purpose: Functions related to adding articles to the database.
+*/
+
 import Form from "../formBuilder"
-// this import can be deleted with highlighted text code (lines 13-15)
 import newsInputs from "./newsInputs"
+import API from "../api";
+import getFormValues from "../getFormValues"
 
 const addFunctions = {
   // Listener on "Add Article" button that opens form to add new article
@@ -13,7 +19,9 @@ const addFunctions = {
       newArticleBtn.classList.add("hide")
     })
   }
-
+  // addNewArticle() {
+  //   API.saveData()
+  // }
 }
 
 export default addFunctions

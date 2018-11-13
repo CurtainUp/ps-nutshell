@@ -1,3 +1,8 @@
+/*
+  author(s): Elyse
+  purpose: Functions related to editing articles in the database.
+*/
+
 import Form from "../formBuilder"
 // this import can be deleted with highlighted text code (lines 13-15)
 import newsInputs from "./newsInputs"
