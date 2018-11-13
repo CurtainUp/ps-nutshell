@@ -33,7 +33,11 @@ class Message {
     const msgInfo = new DOMComponent("p", {classList: "message__info"}, userName, msgTime)
     const editBtn = new DOMComponent("a", {classList:"message__edit"}, "Edit")
     const msgText = new DOMComponent("p", {classList: "message__text"}, this.text)
-    const mainCol = new DOMComponent("div", {classList: "col s12"}, msgInfo, editBtn, msgText)
+    let mainCol = new DOMComponent("div", {classList: "col s12"}, msgInfo, msgText)
+
+    if(userSession.getUser() === this.userId) {
+      mainCol = new DOMComponent("div", {classList: "col s12"}, msgInfo, editBtn, msgText)
+    }
     const message = new DOMComponent("li", msgAttr, mainCol)
 
     return message

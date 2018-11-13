@@ -26,7 +26,6 @@ const editMsg = {
           textEl.classList.remove("hide")
           message.querySelector(".edit-message__wrapper").remove()
         }
-
       })
     })
   },
