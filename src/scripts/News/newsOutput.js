@@ -6,7 +6,7 @@
 import DOMComponent from "nss-domcomponent"
 import addFunctions from "./newsAdd"
 import News from "./news"
-import editFunctions from "./newsEditor"
+import editFunctions from "./newsEdit"
 import API from "../api"
 import userSession from "../sessionStorage"
 

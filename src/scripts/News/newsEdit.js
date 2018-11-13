@@ -1,4 +1,4 @@
-import Form from ".././formBuilder"
+import Form from "../formBuilder"
 // this import can be deleted with highlighted text code (lines 13-15)
 import newsInputs from "./newsInputs"
 import API from "../api"
