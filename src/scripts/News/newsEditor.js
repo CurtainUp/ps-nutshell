@@ -11,19 +11,17 @@ let testNews = new News("Waddle News", "all the happenings at Waddle HQ", "Novem
 
 function editNews(x) {
   // Opens edit fields FORM
-  let newsEditor = new Form("Edit", "news-editor", newsInputs)
+  let newsEditor = new Form("Edit", "news-editor", newsInputs.editInputs)
   let newsEdit = newsEditor.build()
-  newsEdit.render("body")
+  newsEdit.render("ul.collection")
   // populates inputs with values from News instance
-  let titleVal = document.querySelector("input#title")
+  let titleVal = document.querySelector("input#edit-title")
   console.log(titleVal)
   titleVal.value = x.title
-  let summaryVal = document.querySelector("input#summary")
+  let summaryVal = document.querySelector("input#edit-summary")
   summaryVal.value = x.summary
-  let urlVal = document.querySelector("input#url")
+  let urlVal = document.querySelector("input#edit-url")
   urlVal.value = x.url
-  let timestampVal = document.querySelector("input#timestamp")
-  timestampVal.value = x.timestamp
 }
 
 // Event listener that opens pre-loaded form when "Edit" is clicked **Currently can only take specific array**

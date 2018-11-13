@@ -4,11 +4,9 @@ import newsInputs from "./newsInputs"
 
 // Listener on "Add Article" button that opens form to add new article
 function newArticleListener() {
-  console.log("New Article Listener function called")
   let newArticleBtn = document.querySelector("button.article-button")
   newArticleBtn.addEventListener("click", () => {
-    console.log("add article click")
-    let newsEditor = new Form("New Article", "news-editor", newsInputs)
+    let newsEditor = new Form("New Article", "news-editor", newsInputs.articleInputs)
     let newsEdit = newsEditor.build()
     newsEdit.render("article.container")
     newArticleBtn.classList.add("hide")
