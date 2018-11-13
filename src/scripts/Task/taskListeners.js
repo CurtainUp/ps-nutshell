@@ -23,7 +23,7 @@ const taskListeners = {
   addDeleteListener() {
     document.querySelectorAll(".delete-button").forEach((btn) => {
       btn.addEventListener("click", (e) => {
-        console.log("delete",e)
+        console.log("delete", e)
       })
     })
   },
@@ -41,6 +41,13 @@ const taskListeners = {
       btn.addEventListener("click", (e) => {
         console.log("save", e)
       })
+    })
+  },
+  addAddTaskListener() {
+    document.querySelector(".add-task-button").addEventListener("click", (e) => {
+      console.log("add", e)
+      document.querySelector("#formContainer").classList.toggle("hide")
+      document.querySelector(".add-task-button").classList.add("hide")
     })
   }
 }

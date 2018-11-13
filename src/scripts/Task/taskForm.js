@@ -6,11 +6,11 @@ import clear from "../clear"
 const mainContainer = document.querySelector(".main-container")
 
 let taskInputs = [
-  ["text", "name", "To Do:"],
+  ["text", "name", "To Do"],
   ["text", "dueBy", "Complete By:"],
-  ["button", "saveTaskBtn", "Save Task"]
+  ["button", "saveTaskBtn", "Add"]
 ]
-const taskForm = new Form("To Do List", "taskForm", taskInputs).build()
+const taskForm = new Form("Add Task", "taskForm", taskInputs).build()
 
 
 let renderTaskForm = () => {
@@ -28,6 +28,9 @@ let renderTaskForm = () => {
     taskObj.status = 0
     taskObj.userId = userSession.getUser()
     console.log(taskObj)
+    document.querySelector("#formContainer").classList.toggle("hide")
+    document.querySelector(".add-task-button").classList.toggle("hide")
   })
 }
+
 export default renderTaskForm
