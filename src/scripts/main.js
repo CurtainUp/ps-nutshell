@@ -1,6 +1,5 @@
 import landingPage from "./login/landing"
 import events from "./Event/eventForm"
-import eventPage from "./Event/eventOutput"
 import navListeners from "./listeners"
 import welcomePage from "./login/welcome"
 import API from "./api.js"
@@ -19,13 +18,6 @@ if (window.sessionStorage.length === 0) {
   })
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  let elems = document.querySelectorAll(".datepicker");
-  let instances = M.Datepicker.init(elems, {autoClose: true, format: "yyyy-mm-dd"});
-});
 
-// events.eventFormBuilder()
-// events.eventFormListener()
 
-eventPage()
 navListeners()

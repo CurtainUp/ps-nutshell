@@ -55,7 +55,7 @@ function buildFormElement(inputType, id, labelText) {
       let text = radio[2]
       let button = new DOMComponent("input", {type: type, name: name, id: radioId})
       let span = new DOMComponent("span", text)
-      let label = new DOMComponent("label", {for: id, className: "input-field col s6 m4 l3"}, button, span)
+      let label = new DOMComponent("label", {htmlFor: id, className: "input-field col s6 m4 l3"}, button, span)
       radiosArr.push(label)
     })
 
@@ -64,7 +64,7 @@ function buildFormElement(inputType, id, labelText) {
   } else {
 
     //Build the other types of inputs
-    let label = new DOMComponent("label", {for: id}, labelText)
+    let label = new DOMComponent("label", {htmlFor: id}, labelText)
     let input
 
     if (inputType === "select") {
