@@ -28,9 +28,9 @@ let getFormValues = (target) => {
 example of how we would attach the event listener to a form and pass the current target of the event to
 the getFormValues function. This example consoles the object that would be returned from the function
 */
-let form = document.querySelector("form").addEventListener("click", (e) => {
-  let newsValues = getFormValues(e.currentTarget)
-  console.log("object to post", newsValues)
-})
+// let form = document.querySelector("form").addEventListener("click", (e) => {
+//   let newsValues = getFormValues(e.currentTarget)
+//   console.log("object to post", newsValues)
+// })
 
 export default getFormValues
