@@ -4,6 +4,8 @@ import welcomePage from "./login/welcome"
 import API from "./api.js"
 import userSession from "./sessionStorage"
 import renderTaskForm from "./Task/taskForm"
+import Task from "./Task/task"
+import taskListeners from "./Task/taskListeners"
 
 // userSession.logOutUser()
 
@@ -19,4 +21,13 @@ import renderTaskForm from "./Task/taskForm"
 // }
 // navListeners()
 
-renderTaskForm()
+// renderTaskForm()
+userSession.logInUser(1)
+API.getData(`tasks?userId=${userSession.getUser()}`).then((tasks) => {
+  tasks.forEach((task) => {
+    let newTask = new Task(task)
+    newTask.buildTaskElement(".main-container")
+  })
+  taskListeners.initialStatus()
+})
+
