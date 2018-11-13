@@ -1,9 +1,17 @@
 import landingPage from "./login/landing"
-import EventForm from "./Event/eventForm"
+import events from "./Event/eventForm"
+import eventPage from "./Event/eventOutput"
 
 if(window.sessionStorage.length === 0) {
   landingPage()
 }
 
-const mainContainer = document.querySelector(".main-container")
-EventForm.build().render(mainContainer)
+document.addEventListener("DOMContentLoaded", function() {
+  let elems = document.querySelectorAll(".datepicker");
+  let instances = M.Datepicker.init(elems, {autoClose: true, format: "yyyy-mm-dd"});
+});
+
+// events.eventFormBuilder()
+// events.eventFormListener()
+
+eventPage()
