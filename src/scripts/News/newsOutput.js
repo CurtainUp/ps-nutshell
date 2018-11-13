@@ -20,6 +20,24 @@ export default loadNews
 
 // function saveNews() {
 //   // If no existing id, POST to database
+// API.getData(`news?id=${entryObject.id}`)
+//   .then((news) => {
+//     if (news.id === true) {
+//       API.editData(resource, entryObject, id)
+//       return fetch(`http://localhost:8088/${resource}/${id}`, {
+//         method: "PATCH",
+//         headers: {
+//           "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify(entryObject)
+//       })
+//         .then(response => response.json())
+//     } else {
+//       API.saveData("news", entryObject)
+//         .then(response => response.json())
+//     }
+//   }
+
 //   // If already existing, PATCH updated fields to database
 //   // then
 //   // GET all news items
