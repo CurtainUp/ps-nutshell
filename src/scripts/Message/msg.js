@@ -3,6 +3,7 @@
   purpose: defines a class that builds a single message element
 */
 import DOMComponent from "nss-domcomponent"
+import userSession from "./../sessionStorage"
 
 class Message {
   constructor(msgObj) {
@@ -16,13 +17,11 @@ class Message {
 
   build() {
 
-    let currentUser = Number(window.sessionStorage.id)
-    console.log("currentUser", currentUser)
-    console.log("userId", this.userId)
     let msgAttr = {
       classList: "collection-item valign-wrapper message test"
     }
-    if(currentUser === this.userId) {
+
+    if (userSession.getUser() === this.userId) {
       msgAttr = {
         classList: "collection-item valign-wrapper message message--currentUser right-align"
       }

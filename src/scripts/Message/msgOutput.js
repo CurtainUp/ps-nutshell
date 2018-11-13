@@ -25,7 +25,7 @@ function messages(messagesArray) {
   return messagesElement
 }
 
-function messagesLayout() {
+function loadMessages() {
   return API.getData("messages?_expand=user")
     .then(messagesArray => {
       const header = new Row(new DOMComponent("h2", {classList: "header"}, "Chat with your Waddle"))
@@ -47,4 +47,4 @@ function messagesLayout() {
     })
 }
 
-export default messagesLayout
+export default loadMessages
