@@ -15,7 +15,7 @@ const editMsg = {
       message.querySelector(".message__edit").addEventListener("click", () => {
         let editToggle = message.querySelector(".message__edit")
         let textEl = message.querySelector("p.message__text")
-
+        //TODO: show edit on hover or some other way
         if(editToggle.textContent === "Edit") {
           editMsg.addInput(message.querySelector(".col"))
           editToggle.textContent = "Cancel"
