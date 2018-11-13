@@ -5,7 +5,7 @@ let newsInputs = {
     ["text", "title", "Title"],
     ["text", "summary", "Summary"],
     ["url", "url", "URL"],
-    ["submit", "formSubmit", "submit"],
+    ["submit", "formSubmit", "add"],
     ["button", "back-button", "back"]
   ],
   // Array used to build Edit form
@@ -13,7 +13,7 @@ let newsInputs = {
     ["text", "edit-title", "Title"],
     ["text", "edit-summary", "Summary"],
     ["url", "edit-url", "URL"],
-    ["submit", "edit-formSubmit", "submit"],
+    ["submit", "edit-save-button", "save"],
     ["button", "edit-back-button", "back"]]
 }
 

@@ -4,9 +4,9 @@
 */
 
 import DOMComponent from "nss-domcomponent"
-import newArticleListener from "./newsAdd"
+import addFunctions from "./newsAdd"
 import News from "./news"
-import editListener from "./newsEditor"
+import editFunctions from "./newsEditor"
 import API from "../api"
 import userSession from "../sessionStorage"
 
@@ -25,7 +25,7 @@ function grabUserArticles() {
         i.buildNewsElement().render("ul.collection")
       })
       // Adds event listeners to buttons.
-      editListener()
+      editFunctions.editListener()
     })
 }
 
@@ -33,7 +33,7 @@ function grabUserArticles() {
 function loadNews() {
   let createArticleBtn = new DOMComponent("button", { classList: "article-button btn-large waves-effect waves-light" }, "Add Article")
   createArticleBtn.render("article.container")
-  newArticleListener()
+  addFunctions.newArticleListener()
   grabUserArticles()
   // --
   // let testNews = new News("Waddle News", "all the happenings at Waddle HQ", "November 10, 2018", "https://www.vox.com")
