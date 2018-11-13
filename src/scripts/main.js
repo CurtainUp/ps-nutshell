@@ -1,7 +1,7 @@
 import landingPage from "./login/landing"
 import navListeners from "./listeners"
 import welcomePage from "./login/welcome"
-import API from "./api.js"
+import API from "./api"
 import userSession from "./sessionStorage"
 
 // userSession.logOutUser()
