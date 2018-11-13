@@ -1,11 +1,7 @@
 import Form from ".././formBuilder"
 // this import can be deleted with highlighted text code (lines 13-15)
-import News from "./news"
 import newsInputs from "./newsInputs"
-
-// TO BE DELETED. Currently used as proof of concept for editListener()
-let testNews = new News("Waddle News", "all the happenings at Waddle HQ", "November 10, 2018", "https://www.vox.com")
-// ----------
+import API from "../api"
 
 // Function to that creates article editor element
 
@@ -16,20 +12,26 @@ function editNews(x) {
   newsEdit.render("ul.collection")
   // populates inputs with values from News instance
   let titleVal = document.querySelector("input#edit-title")
-  console.log(titleVal)
-  titleVal.value = x.title
+  titleVal.value = x[0].title
   let summaryVal = document.querySelector("input#edit-summary")
-  summaryVal.value = x.summary
+  summaryVal.value = x[0].summary
   let urlVal = document.querySelector("input#edit-url")
-  urlVal.value = x.url
+  urlVal.value = x[0].url
 }
 
 // Event listener that opens pre-loaded form when "Edit" is clicked **Currently can only take specific array**
 function editListener() {
-  let editButton = document.querySelector(".edit-button")
-  editButton.addEventListener("click", function () {
-    editNews(testNews)
-    console.log("Edit button clicked")
+  let editButton = document.querySelectorAll(".edit-button")
+  editButton.forEach(button => {
+    button.addEventListener("click", function () {
+      console.log(event.currentTarget.parentNode.id)
+      API.getData(`news?id=${event.currentTarget.parentNode.id}`)
+        .then(article => {
+          console.log(article)
+          editNews(article)
+        })
+      console.log("Edit button clicked")
+    })
   })
 }
 

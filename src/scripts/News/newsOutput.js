@@ -7,23 +7,41 @@ import DOMComponent from "nss-domcomponent"
 import newArticleListener from "./newsAdd"
 import News from "./news"
 import editListener from "./newsEditor"
+import API from "../api"
+import userSession from "../sessionStorage"
+
+function grabUserArticles() {
+  // Fetches saved articles
+  API.getData(`news?userId=${userSession.getUser()}`)
+  // Turns saved articles into instances of News class
+    .then(newsArray => {
+      let savedArticles = []
+      newsArray.forEach(item => {
+        let article = new News(item)
+        savedArticles.push(article)
+      })
+      // build and render each instance to the DOM
+      savedArticles.forEach(i => {
+        i.buildNewsElement().render("ul.collection")
+      })
+      // Adds event listeners to buttons.
+      editListener()
+    })
+}
 
 // Loads News Page
 function loadNews() {
   let createArticleBtn = new DOMComponent("button", { classList: "article-button btn-large waves-effect waves-light" }, "Add Article")
   createArticleBtn.render("article.container")
   newArticleListener()
-  // return API.getData("news?_expand=user")
-  //   .then(newsArray => )
-      // for each: make new instance of News and run buildNewsElement
+  grabUserArticles()
   // --
-  let testNews = new News("Waddle News", "all the happenings at Waddle HQ", "November 10, 2018", "https://www.vox.com")
-  let testNews2 = new News("Second Time Around", "People want MORE Waddle", "November 11, 2018", "https://www.vox.com")
+  // let testNews = new News("Waddle News", "all the happenings at Waddle HQ", "November 10, 2018", "https://www.vox.com")
+  // let testNews2 = new News("Second Time Around", "People want MORE Waddle", "November 11, 2018", "https://www.vox.com")
 
-  testNews.buildNewsElement()
-  testNews2.buildNewsElement()
+  // testNews.buildNewsElement()
+  // testNews2.buildNewsElement()
   // ---
-  editListener()
   // add code that fetches user's articles, then creates an instance of News class for each, then run buildNewsElement on each
 }
 
