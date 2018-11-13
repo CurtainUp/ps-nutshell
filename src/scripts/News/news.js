@@ -3,6 +3,7 @@
   purpose: defines a class that builds a single news element
 */
 import DOMComponent from "nss-domcomponent"
+
 class News {
   constructor(title, summary, timestamp, url) {
     this.title = title,

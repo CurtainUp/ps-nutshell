@@ -1,6 +1,19 @@
-// import getFormValues from "./listeners"
+import landingPage from "./login/landing"
+import welcomePage from "./login/welcome"
+import API from "./api.js"
+import userSession from "./sessionStorage"
 import News from "./News/news"
 import loadNews from "./News/newsOutput"
+
+// userSession.logOutUser()
+
+if (window.sessionStorage.length === 0) {
+  landingPage()
+} else {
+  API.getData(`users/${userSession.getUser()}`).then((users) => {
+    welcomePage(users.displayName)
+  })
+}
 
 // --
 let testNews = new News("Waddle News", "all the happenings at Waddle HQ", "November 10, 2018", "https://www.vox.com")
@@ -12,8 +25,4 @@ testNews2.buildNewsElement()
 
 loadNews()
 
-// import landingPage from "./login/landing"
 
-// if(window.sessionStorage.length === 0) {
-//   landingPage()
-// }
