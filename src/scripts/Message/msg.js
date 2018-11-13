@@ -15,11 +15,17 @@ class Message {
   }
 
   build() {
-    const msgAttr = {
-      classList: "collection-item valign-wrapper message"
+
+    let currentUser = Number(window.sessionStorage.id)
+    console.log("currentUser", currentUser)
+    console.log("userId", this.userId)
+    let msgAttr = {
+      classList: "collection-item valign-wrapper message test"
     }
-    const thisUserMsgAttr = {
-      classList: "collection-item valign-wrapper message message--currentUser right-align"
+    if(currentUser === this.userId) {
+      msgAttr = {
+        classList: "collection-item valign-wrapper message message--currentUser right-align"
+      }
     }
 
     const userName = new DOMComponent("span", {classList:"message__username"}, `${this.displayName} `)
