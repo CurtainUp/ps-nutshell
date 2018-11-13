@@ -2,6 +2,7 @@
   author(s): Elyse
   purpose: Event listeners for section navigation
 */
+import loadNews from "./News/newsOutput"
 
 // Grab nav elements
 const friendsNav = document.getElementById("friends")
@@ -28,7 +29,7 @@ let navListeners = () => {
     mainContainer.innerHTML = "<h>Your Events</h>"
   })
   newsNav.addEventListener("click", () => {
-    mainContainer.innerHTML = "<h>Your News</h>"
+    loadNews()
   })
   logoutNav.addEventListener("click", () => {
     mainContainer.innerHTML = "<h>GET OUT WE DON'T WANT YOU ANYWAY!</h>"

@@ -12,7 +12,7 @@ function loadNews() {
   let createArticleBtn = new DOMComponent("button", { classList: "article-button btn-large waves-effect waves-light" }, "Add Article")
   createArticleBtn.render("article.container")
   newArticleListener()
-  editListener()
+  // editListener()
   // add code that fetches user's articles, then creates an instance of News class for each, then run buildNewsElement on each
 }
 

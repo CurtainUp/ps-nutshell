@@ -47,16 +47,16 @@ function editNews(x) {
 }
 
 // Event listener that opens pre-loaded form when "Edit" is clicked **Currently can only take specific array**
-function editListener() {
-  let editButton = document.querySelector(".edit-button")
-  editButton.addEventListener("click", function () {
-    editNews(testNews)
-    console.log("Edit button clicked")
-  })
-}
+// function editListener() {
+//   let editButton = document.querySelector(".edit-button")
+//   editButton.addEventListener("click", function () {
+//     editNews(testNews)
+//     console.log("Edit button clicked")
+//   })
+// }
 
 // function saveNews(x) {
 //   let newsSaveBtn =
 
 // }
-export default newArticleListener && editListener
+export default newArticleListener
