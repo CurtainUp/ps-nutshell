@@ -5,7 +5,6 @@
 
 import API from "./../api"
 import loadMessages from "./msgOutput"
-import getFormValues from "./../listeners"
 import userSession from "./../sessionStorage"
 
 function newMessage(msgObj) {
