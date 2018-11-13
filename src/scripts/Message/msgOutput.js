@@ -7,6 +7,7 @@ import DOMComponent from "nss-domcomponent"
 import API from "./../api"
 import Message from "./msg"
 import msgFormListener from "./msgNew"
+import editMsg from "./msgEdit"
 
 class Row extends DOMComponent {
   constructor(...children) {
@@ -44,9 +45,10 @@ function loadMessages() {
       const msgForm = new DOMComponent("div", {classList: "row valign-wrapper", id: "msgForm"}, inputField, submitWrap)
 
       const section = new DOMComponent("section", {classList: "messages container"}, header, msgsRow, msgForm)
-      section
+
       section.render(".main-container")
       msgFormListener()
+      editMsg.addListeners()
     })
 }
 

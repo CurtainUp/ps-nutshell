@@ -6,10 +6,12 @@
 import API from "./../api"
 import loadMessages from "./msgOutput"
 import userSession from "./../sessionStorage"
+import clear from "../clear";
 
 function newMessage(msgObj) {
   return API.saveData("messages", msgObj)
     .then(() => {
+      clear()
       loadMessages()
     })
 }

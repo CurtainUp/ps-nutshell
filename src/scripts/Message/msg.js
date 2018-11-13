@@ -20,7 +20,6 @@ class Message {
     let msgAttr = {
       classList: "collection-item valign-wrapper message test"
     }
-
     if (userSession.getUser() === this.userId) {
       msgAttr = {
         classList: "collection-item valign-wrapper message message--currentUser right-align"
@@ -30,9 +29,9 @@ class Message {
     const userName = new DOMComponent("span", {classList:"message__username"}, `${this.displayName} `)
     const msgTime = new DOMComponent("span", {classList:"message__time grey-text text-lighten-1"}, this.timestamp)
     const msgInfo = new DOMComponent("p", {classList: "message__info"}, userName, msgTime)
-
+    const editBtn = new DOMComponent("a", {classList:"message__edit"}, "Edit")
     const msgText = new DOMComponent("p", {classList: "message__text"}, this.text)
-    const mainCol = new DOMComponent("div", {classList: "col s12"}, msgInfo, msgText)
+    const mainCol = new DOMComponent("div", {classList: "col s12"}, msgInfo, editBtn, msgText)
     const message = new DOMComponent("li", msgAttr, mainCol)
 
     return message
