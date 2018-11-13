@@ -4,6 +4,7 @@
 */
 import DOMComponent from "nss-domcomponent"
 
+
 /*
   To use Form, create an array with the inputs you want.
   Each input is an array with [inputType, id, and labelText].

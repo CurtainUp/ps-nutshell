@@ -1,36 +1,38 @@
 /*
-  author(s): Nolan
-  purpose: module contains a function for adding event listeners
+  author(s): Elyse
+  purpose: Event listeners for section navigation
 */
 
-// callback function for form submit event listeners
-let getFormValues = (target) => {
-  /*
-  target = current target(form which contains the button being clicked/submitted)
-  set value of formDivs to an iterable node list of all input fields
-  */
-  let formDivs = target.querySelectorAll(".input-field")
+// Grab nav elements
+const friendsNav = document.getElementById("friends")
+const chatNav = document.getElementById("chat")
+const todoNav = document.getElementById("todo")
+const eventsNav = document.getElementById("events")
+const newsNav = document.getElementById("news")
+const logoutNav = document.getElementById("logout")
 
-  // create object to return
-  let formValuesObj = {}
+const mainContainer = document.querySelector(".main-container")
 
-  // iterate through nodelist and assign each input id as the key and the input value as the value in the object
-  formDivs.forEach((input) => {
-    let element = input.querySelector("input")
-    if(element) {
-      formValuesObj[element.id] = element.value
-    }
+// adds event listeners to each nav element
+let navListeners = () => {
+  friendsNav.addEventListener("click", () => {
+    mainContainer.innerHTML = "<h>Your Friends</h>"
   })
-  return formValuesObj
+  chatNav.addEventListener("click", () => {
+    mainContainer.innerHTML = "<h>Your Chat</h>"
+  })
+  todoNav.addEventListener("click", () => {
+    mainContainer.innerHTML = "<h>Your To Do List</h>"
+  })
+  eventsNav.addEventListener("click", () => {
+    mainContainer.innerHTML = "<h>Your Events</h>"
+  })
+  newsNav.addEventListener("click", () => {
+    mainContainer.innerHTML = "<h>Your News</h>"
+  })
+  logoutNav.addEventListener("click", () => {
+    mainContainer.innerHTML = "<h>GET OUT WE DON'T WANT YOU ANYWAY!</h>"
+  })
 }
 
-/*
-example of how we would attach the event listener to a form and pass the current target of the event to
-the getFormValues function. This example consoles the object that would be returned from the function
-*/
-// let form = document.querySelector("form").addEventListener("click", (e) => {
-//   let newsValues = getFormValues(e.currentTarget)
-//   console.log("object to post", newsValues)
-// })
-
-export default getFormValues
+export default navListeners
