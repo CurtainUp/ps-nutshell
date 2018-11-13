@@ -6,6 +6,7 @@
 import DOMComponent from "nss-domcomponent"
 import API from "./../api"
 import Message from "./msg"
+import msgFormListener from "./msgNew"
 
 class Row extends DOMComponent {
   constructor(...children) {
@@ -37,13 +38,15 @@ function loadMessages() {
       const label = new DOMComponent("label", {htmlFor: "text"}, "Send a Message")
       const inputField = new DOMComponent("div", {classList: "input-field col s11"}, icon, textField, label)
 
-      const submitIcon = new DOMComponent("i", {classList: "material-icons"}, "send")
+      const submitIcon = new DOMComponent("i", {classList: "material-icons", id:"saveMsg"}, "send")
       const submit = new DOMComponent("a", {classList:"btn-floating pulse waves-effect waves-light right"}, submitIcon)
       const submitWrap = new DOMComponent("div", {classList: "col s1"}, submit)
-      const msgForm = new DOMComponent("div", {classList: "row valign-wrapper"}, inputField, submitWrap)
+      const msgForm = new DOMComponent("div", {classList: "row valign-wrapper", id: "msgForm"}, inputField, submitWrap)
 
       const section = new DOMComponent("section", {classList: "messages container"}, header, msgsRow, msgForm)
+      section
       section.render(".main-container")
+      msgFormListener()
     })
 }
 
