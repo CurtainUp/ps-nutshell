@@ -2,6 +2,7 @@ import Form from "./../formBuilder"
 import landingPage from "./landing"
 import getFormValues from "../getFormValues"
 import validate from "./../validate"
+import clear from "./../clear"
 
 const mainContainer = document.querySelector(".main-container")
 
@@ -15,7 +16,7 @@ let loginInputs = [
 const loginForm = new Form("Login", "loginForm", loginInputs).build()
 
 function loginPage() {
-  mainContainer.innerHTML = null
+  clear()
   loginForm.render(".main-container")
 
   /* Back Button Functionality */

@@ -4,15 +4,23 @@
 */
 
 import DOMComponent from "nss-domcomponent"
-import newArticleListener from "./newsButtons"
-import editListener from "./newsButtons"
+import newArticleListener from "./newsAdd"
+import News from "./news"
+import editListener from "./newsEditor"
 
 // Loads News Page
 function loadNews() {
   let createArticleBtn = new DOMComponent("button", { classList: "article-button btn-large waves-effect waves-light" }, "Add Article")
   createArticleBtn.render("article.container")
   newArticleListener()
-  // editListener()
+  // --
+  let testNews = new News("Waddle News", "all the happenings at Waddle HQ", "November 10, 2018", "https://www.vox.com")
+  let testNews2 = new News("Second Time Around", "People want MORE Waddle", "November 11, 2018", "https://www.vox.com")
+
+  testNews.buildNewsElement()
+  testNews2.buildNewsElement()
+  // ---
+  editListener()
   // add code that fetches user's articles, then creates an instance of News class for each, then run buildNewsElement on each
 }
 
