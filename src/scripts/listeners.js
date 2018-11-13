@@ -24,5 +24,4 @@ let getFormValues = (target) => {
   return formValuesObj
 }
 
-
 export default getFormValues
