@@ -9,6 +9,7 @@ const chatNav = document.getElementById("chat")
 const todoNav = document.getElementById("todo")
 const eventsNav = document.getElementById("events")
 const newsNav = document.getElementById("news")
+const logoutNav = document.getElementById("logout")
 
 const mainContainer = document.querySelector(".main-container")
 
@@ -28,6 +29,9 @@ let navListeners = () => {
   })
   newsNav.addEventListener("click", e => {
     mainContainer.innerHTML = "<h>Your News</h>"
+  })
+  logoutNav.addEventListener("click", e => {
+    mainContainer.innerHTML = "<h>GET OUT WE DON'T WANT YOU ANYWAY!</h>"
   })
 }
 
