@@ -3,18 +3,14 @@ import welcomePage from "./login/welcome"
 import API from "./api.js"
 import userSession from "./sessionStorage"
 
-userSession.logOutUser()
-userSession.logInUser("2")
+// userSession.logOutUser()
 
-if(window.sessionStorage.length === 0) {
+
+if (window.sessionStorage.length === 0) {
   landingPage()
 } else {
-  API.getData("users").then((users) => {
-    users.forEach((user) =>{
-      if(userSession.getUser() === user.id){
-        welcomePage(user.displayName)
-      }
-    })
+  API.getData(`users/${userSession.getUser()}`).then((users) => {
+    welcomePage(users.displayName)
   })
 }
 
