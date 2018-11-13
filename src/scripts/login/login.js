@@ -1,6 +1,6 @@
 import Form from "./../formBuilder"
 import landingPage from "./landing"
-import getFormValues from "./../listeners"
+import getFormValues from "../getFormValues"
 import validate from "./../validate"
 
 const mainContainer = document.querySelector(".main-container")
@@ -28,12 +28,13 @@ function loginPage() {
   /* Submit Button Functionality */
   document.querySelector("#loginForm").addEventListener("click", e => {
     e.preventDefault()
-    if(e.target.id === "loginBtn") {
+    if (e.target.id === "loginBtn") {
       let loginValues = getFormValues(e.target.parentNode.parentNode.parentNode)
       validate.existingUser(loginValues)
+      let navButtons = document.querySelectorAll(".hide")
+      navButtons.forEach((item) => { item.className = "" })
     }
   })
-
 }
 
 export default loginPage
