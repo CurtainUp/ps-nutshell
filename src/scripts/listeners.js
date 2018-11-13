@@ -15,22 +15,22 @@ const mainContainer = document.querySelector(".main-container")
 
 // adds event listeners to each nav element
 let navListeners = () => {
-  friendsNav.addEventListener("click", e => {
+  friendsNav.addEventListener("click", () => {
     mainContainer.innerHTML = "<h>Your Friends</h>"
   })
-  chatNav.addEventListener("click", e => {
+  chatNav.addEventListener("click", () => {
     mainContainer.innerHTML = "<h>Your Chat</h>"
   })
-  todoNav.addEventListener("click", e => {
+  todoNav.addEventListener("click", () => {
     mainContainer.innerHTML = "<h>Your To Do List</h>"
   })
-  eventsNav.addEventListener("click", e => {
+  eventsNav.addEventListener("click", () => {
     mainContainer.innerHTML = "<h>Your Events</h>"
   })
-  newsNav.addEventListener("click", e => {
+  newsNav.addEventListener("click", () => {
     mainContainer.innerHTML = "<h>Your News</h>"
   })
-  logoutNav.addEventListener("click", e => {
+  logoutNav.addEventListener("click", () => {
     mainContainer.innerHTML = "<h>GET OUT WE DON'T WANT YOU ANYWAY!</h>"
   })
 }
