@@ -3,6 +3,8 @@
   purpose: Event listeners for section navigation
 */
 
+import loadMessages from "./Message/msgOutput"
+
 // Grab nav elements
 const friendsNav = document.getElementById("friends")
 const chatNav = document.getElementById("chat")
@@ -19,7 +21,7 @@ let navListeners = () => {
     mainContainer.innerHTML = "<h>Your Friends</h>"
   })
   chatNav.addEventListener("click", () => {
-    mainContainer.innerHTML = "<h>Your Chat</h>"
+    loadMessages()
   })
   todoNav.addEventListener("click", () => {
     mainContainer.innerHTML = "<h>Your To Do List</h>"
