@@ -18,14 +18,14 @@ class Task {
   //   </label>
   // </p>
 
-  buildTaskElement(targetContainer) {
+  buildTaskElement(targetContainer, uniqueTaskStatus) {
     let taskIcon = new DOMComponent("i", { classList: "material-icons circle" }, "storage")
     let taskTitle = new DOMComponent("span", { classList: "title" }, `${this.name}`)
     let taskDueBy = new DOMComponent("p", { classList: "time" }, `${this.dueBy}`)
 
     let statusInput = new DOMComponent("input", {
-      classList: "container status-radio",
-      name: "statusRadio",
+      classList: "container  status-radio status-radio0",
+      name: `statusRadio${uniqueTaskStatus}`,
       type: "radio"
     })
     let statusSpan = new DOMComponent("span", { classList: "container" }, "To Do")
@@ -33,8 +33,8 @@ class Task {
     let statusRadioContainer = new DOMComponent("p", { classList: "container" }, statusLabel)
 
     let statusInput2 = new DOMComponent("input", {
-      classList: "container status-radio",
-      name: "statusRadio",
+      classList: "container status-radio status-radio1",
+      name: `statusRadio${uniqueTaskStatus}`,
       type: "radio"
     })
     let statusSpan2 = new DOMComponent("span", { classList: "container" }, "Doing")
@@ -42,8 +42,8 @@ class Task {
     let statusRadioContainer2 = new DOMComponent("p", { classList: "container" }, statusLabel2)
 
     let statusInput3 = new DOMComponent("input", {
-      classList: "container status-radio",
-      name: "statusRadio",
+      classList: "container status-radio status-radio2",
+      name: `statusRadio${uniqueTaskStatus}`,
       type: "radio"
     })
     let statusSpan3 = new DOMComponent("span", { classList: "container" }, "Done")
