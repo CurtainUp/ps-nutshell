@@ -9,6 +9,7 @@ class Task {
     this.name = props.name
     this.dueBy = props.dueBy
     this.status = props.status
+    this.id = props.id
   }
 
   //   <p>
@@ -54,7 +55,10 @@ class Task {
     let taskEdit = new DOMComponent("button", { classList: "edit-button btn-small waves-effect waves-light" }, "Edit")
     let taskSave = new DOMComponent("button", { classList: "save-button btn-small waves-effect waves-light" }, "Save")
     let taskDelete = new DOMComponent("button", { classList: "delete-button btn-small waves-effect waves-light" }, "Delete")
-    let taskSection = new DOMComponent("li", { classList: "collection-item avatar" }, taskIcon, taskTitle, taskDueBy, statusRadioCollection, taskEdit, taskSave, taskDelete)
+    let taskSection = new DOMComponent("li", {
+      classList: "collection-item avatar",
+      id: `task-${this.id}`
+    }, taskIcon, taskTitle, taskDueBy, statusRadioCollection, taskEdit, taskSave, taskDelete)
     let taskCollection = new DOMComponent("ul", { classList: "collection task-collection" }, taskSection)
     taskCollection.render(targetContainer)
   }

@@ -1,4 +1,5 @@
-import api from "./../api"
+
+import API from "./../api"
 
 const taskListeners = {
   initialStatus(tasks) {
@@ -16,6 +17,7 @@ const taskListeners = {
     document.querySelectorAll(".status-radio").forEach((radio) => {
       radio.addEventListener("click", (e) => {
         console.log("change status", e)
+        // TODO: patch
       })
     })
   },
@@ -23,7 +25,9 @@ const taskListeners = {
   addDeleteListener() {
     document.querySelectorAll(".delete-button").forEach((btn) => {
       btn.addEventListener("click", (e) => {
-        console.log("delete", e)
+        API.deleteData("tasks", e.target.parentElement.id.split("-")[1]).then((response) => {
+          console.log(response)
+        })
       })
     })
   },
@@ -32,6 +36,7 @@ const taskListeners = {
     document.querySelectorAll(".edit-button").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         console.log("edit", e)
+        // TODO: edit in place
       })
     })
   },
@@ -40,14 +45,22 @@ const taskListeners = {
     document.querySelectorAll(".save-button").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         console.log("save", e)
+        // TODO: patch
       })
     })
   },
+
   addAddTaskListener() {
     document.querySelector(".add-task-button").addEventListener("click", (e) => {
-      console.log("add", e)
       document.querySelector("#formContainer").classList.toggle("hide")
       document.querySelector(".add-task-button").classList.add("hide")
+    })
+  },
+
+  addCloseFormListener() {
+    document.querySelector(".clear").addEventListener("click", () => {
+      document.querySelector("#formContainer").classList.toggle("hide")
+      document.querySelector(".add-task-button").classList.toggle("hide")
     })
   }
 }

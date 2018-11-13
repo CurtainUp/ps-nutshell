@@ -3,6 +3,7 @@ import Form from "./../formBuilder"
 import getFormValues from "../getFormValues"
 import userSession from "../sessionStorage"
 import clear from "../clear"
+import API from "./../api"
 const mainContainer = document.querySelector(".main-container")
 
 let taskInputs = [
@@ -10,8 +11,8 @@ let taskInputs = [
   ["text", "dueBy", "Complete By:"],
   ["button", "saveTaskBtn", "Add"]
 ]
-const taskForm = new Form("Add Task", "taskForm", taskInputs).build()
 
+const taskForm = new Form("Add Task", "taskForm", taskInputs).build()
 
 let renderTaskForm = () => {
   clear()
@@ -27,9 +28,16 @@ let renderTaskForm = () => {
     let taskObj = getFormValues(e.target.parentNode.parentNode.parentNode)
     taskObj.status = 0
     taskObj.userId = userSession.getUser()
-    console.log(taskObj)
-    document.querySelector("#formContainer").classList.toggle("hide")
-    document.querySelector(".add-task-button").classList.toggle("hide")
+
+    if(taskObj.name !== "" && taskObj.dueBy != ""){
+      API.saveData("tasks", taskObj)
+      document.querySelector("#formContainer").classList.toggle("hide")
+      document.querySelector(".add-task-button").classList.toggle("hide")
+      document.querySelector("#name").value = ""
+      document.querySelector("#dueBy").value = ""
+    } else {
+      alert("Oops! Please complete task fields")
+    }
   })
 }
 
