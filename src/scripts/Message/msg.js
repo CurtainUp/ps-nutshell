@@ -21,18 +21,25 @@ class Message {
       classList: "collection-item valign-wrapper message test",
       id: `message-${this.id}`
     }
+    let textAttr = {
+      classList: "message__text chip"
+    }
     if (userSession.getUser() === this.userId) {
       msgAttr = {
         classList: "collection-item valign-wrapper message message--currentUser right-align",
         id: `message-${this.id}`
       }
+      textAttr = {
+        classList: "message__text chip teal lighten-1 white-text"
+      }
+
     }
 
     const userName = new DOMComponent("span", {classList:"message__username"}, `${this.displayName} `)
     const msgTime = new DOMComponent("span", {classList:"message__time grey-text text-lighten-1"}, this.timestamp)
     const msgInfo = new DOMComponent("p", {classList: "message__info"}, userName, msgTime)
     const editBtn = new DOMComponent("a", {classList:"message__edit"}, "Edit")
-    const msgText = new DOMComponent("p", {classList: "message__text"}, this.text)
+    const msgText = new DOMComponent("p", textAttr, this.text)
     let mainCol = new DOMComponent("div", {classList: "col s12"}, msgInfo, msgText)
 
     if(userSession.getUser() === this.userId) {

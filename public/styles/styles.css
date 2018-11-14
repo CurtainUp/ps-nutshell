@@ -9,3 +9,17 @@
 .message__username {
   font-weight: bold;
 }
+
+.message__info {
+  margin: 0;
+  font-size: 80%;
+}
+
+.message__text {
+  margin-top: 4px;
+  margin-right: 0;
+}
+
+.message--currentUser .message__text {
+  margin-left: 10px;
+}
