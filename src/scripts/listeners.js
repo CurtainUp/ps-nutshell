@@ -51,9 +51,7 @@ let navListeners = () => {
     // Only load welcome page if a user is logged in.
     if(userSession.getUser()) {
       clear()
-      API.getData(`users/${userSession.getUser()}`).then((users) => {
-        welcomePage(users.displayName)
-      })
+      welcomePage()
     }
   })
 }

@@ -5,7 +5,6 @@
 import API from "./api"
 import userSession from "./sessionStorage"
 
-
 const validate = {
   newUser(entryObject) {
     API.getData(`users?email=${entryObject.email}`)
