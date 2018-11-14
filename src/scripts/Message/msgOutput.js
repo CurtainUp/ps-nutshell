@@ -46,9 +46,14 @@ function loadMessages() {
 
       const section = new DOMComponent("section", {classList: "messages container"}, header, msgsRow, msgForm)
 
+      //Output Messages Section
       section.render(".main-container")
+
+      //Set scroll to bottom of message window
       let scrollBox = document.querySelector(".messages .collection")
       scrollBox.scrollTop = scrollBox.scrollHeight;
+
+      //Add Event listeners for adding and editing messages
       msgFormListener()
       editMsg.addListeners()
     })
