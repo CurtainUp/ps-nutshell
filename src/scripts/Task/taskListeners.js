@@ -13,6 +13,13 @@ const taskListeners = {
     })
   },
 
+  addTaskListeners() {
+    let collection = document.querySelector(".task__list--container")
+    collection.addEventListener("click", (e)=> {
+      console.log(e.target)
+    })
+  },
+
   addStatusListeners() {
     document.querySelectorAll(".status-radio").forEach((radio) => {
       radio.addEventListener("click", (e) => {
