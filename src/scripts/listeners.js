@@ -27,7 +27,7 @@ let navListeners = () => {
   chatNav.addEventListener("click", () => {
     clear()
     loadMessages()
-    document.querySelector("nav li").classList.remove("teal")
+    document.querySelectorAll("nav li").forEach(el => el.classList.remove("teal"))
     chatNav.parentNode.classList.add("teal")
   })
   todoNav.addEventListener("click", () => {
