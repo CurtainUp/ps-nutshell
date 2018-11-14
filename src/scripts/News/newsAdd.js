@@ -12,7 +12,7 @@ import loadNews from "./newsOutput";
 function addNewArticle() {
   let saveArticleBtn = document.querySelector("#formSubmit")
   saveArticleBtn.addEventListener("click", () => {
-    // ADD TIMESTAMP ON CLICK
+    // ADD TIMESTAMP & USER ID ON CLICK
     let articleInfo = getFormValues(document.querySelector("form"))
     API.saveData("news", articleInfo)
   })
