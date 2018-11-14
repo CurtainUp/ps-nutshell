@@ -35,7 +35,7 @@ function registerPage() {
   if (!registerClick.hasAttribute("data-listener")) {
     document.querySelector("#registerForm").addEventListener("click", e => {
       e.preventDefault()
-      if(e.target.id === "registerBtn") {
+      if(e.target.id === "registerBtn" && registerClick.checkValidity()) {
         let loginValues = getFormValues(e.target.parentNode.parentNode.parentNode)
         validate.newUser(loginValues)
         registerClick.reset()
