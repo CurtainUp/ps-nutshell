@@ -4,7 +4,7 @@
 */
 import clear from "./clear"
 import loadMessages from "./Message/msgOutput"
-import welcomePage from "./login/welcome"
+import taskPage from "./Task/taskOutput"
 import API from "./api"
 import userSession from "./sessionStorage"
 
@@ -31,7 +31,7 @@ let navListeners = () => {
   })
   todoNav.addEventListener("click", () => {
     clear()
-    mainContainer.innerHTML = "<h>Your To Do List</h>"
+    taskPage()
   })
   eventsNav.addEventListener("click", () => {
     clear()
