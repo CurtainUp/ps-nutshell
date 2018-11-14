@@ -43,13 +43,20 @@ class Task {
     let statusRadioContainer3 = new DOMComponent("p", { classList: "container" }, statusLabel3)
 
     let statusRadioCollection = new DOMComponent("div", { classList: "container" }, statusRadioContainer2, statusRadioContainer3)
-    let taskEdit = new DOMComponent("button", { classList: "edit-button btn-small waves-effect waves-light" }, "Edit")
+
+    let taskEdit = new DOMComponent("i", { classList: "edit small material-icons" }, "edit")
+    let editContainer = new DOMComponent("a", { classList: " edit btn-floating btn-small waves-effect waves-light" }, taskEdit)
+
     let taskSave = new DOMComponent("button", { classList: "save-button btn-small waves-effect waves-light" }, "Save")
-    let taskDelete = new DOMComponent("button", { classList: "delete-button btn-small waves-effect waves-light" }, "Delete")
+
+    let taskDelete = new DOMComponent("i", { classList: " delete small material-icons" }, "delete_forever")
+    let deleteContainer = new DOMComponent("a", { classList: " delete btn-floating btn-small waves-effect waves-light" }, taskDelete)
+
+    let buttonContainer = new DOMComponent("div", { classList: "secondary-content" }, editContainer, taskSave, deleteContainer)
     let taskSection = new DOMComponent("li", {
-      classList: "collection-item avatar",
+      classList: "collection-item avatar container",
       id: `task-${this.id}`
-    }, taskIcon, taskTitle, taskDueBy, statusRadioCollection, taskEdit, taskSave, taskDelete)
+    }, taskIcon, taskTitle, taskDueBy, statusRadioCollection, buttonContainer)
     let taskCollection = new DOMComponent("ul", { classList: "collection task-collection" }, taskSection)
     taskCollection.render(targetContainer)
   }

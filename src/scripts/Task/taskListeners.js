@@ -26,9 +26,9 @@ const taskListeners = {
     if (!collection.hasAttribute("data-listener")) {
       collection.setAttribute("data-listener", "true")
       collection.addEventListener("click", (e) => {
-        if (e.target.classList.contains("delete-button")) {
+        if (e.target.classList.contains("delete")) {
           clear(".task__list--container")
-          API.deleteData("tasks", e.target.parentElement.id.split("-")[1]).then((response) => {
+          API.deleteData("tasks", e.target.parentElement.parentElement.parentElement.id.split("-")[1]).then((response) => {
             taskListeners.renderTasks()
           })
         }
@@ -39,8 +39,10 @@ const taskListeners = {
 
           e.target.classList.add("hide")
           e.target.previousSibling.classList.remove("hide")
+          e.target.previousSibling.parentElement.classList.remove("hide")
 
-          let taskName = e.target.previousSibling.previousSibling.previousSibling.previousSibling
+
+          let taskName = e.target.parentNode.previousSibling.previousSibling.previousSibling
           taskName.setAttribute("contenteditable", false)
 
           let nameObj = { name: taskName.textContent }
@@ -51,15 +53,17 @@ const taskListeners = {
           })
         }
 
-        if (e.target.classList.contains("edit-button")) {
+        if (e.target.classList.contains("edit")) {
           e.target.classList.add("hide")
+          e.target.parentElement.classList.add("hide")
           e.target.nextSibling.classList.remove("hide")
-          let title = e.target.previousSibling.previousSibling.previousSibling
+          let title = e.target.parentNode.parentNode.previousSibling.previousSibling.previousSibling
           title.addEventListener("keypress", (e) => {
             if (e.key === "Enter") {
               clear(".task__list--container")
               e.target.classList.add("hide")
               e.target.previousSibling.classList.remove("hide")
+              e.target.previousSibling.parentElement.classList.remove("hide")
               title.setAttribute("contenteditable", false)
 
               let nameObj = { name: title.textContent }
