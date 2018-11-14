@@ -5,16 +5,30 @@
 
 import Form from "../formBuilder"
 import newsInputs from "./newsInputs"
-import API from "../api";
+import API from "../api"
 import getFormValues from "../getFormValues"
-import loadNews from "./newsOutput";
+import loadNews from "./newsOutput"
+import clear from "../clear"
+import userSession from "../sessionStorage"
+
 
 function addNewArticle() {
   let saveArticleBtn = document.querySelector("#formSubmit")
-  saveArticleBtn.addEventListener("click", () => {
-    // ADD TIMESTAMP & USER ID ON CLICK
+  saveArticleBtn.addEventListener("click", (e) => {
+    e.preventDefault()
+    // ADD TIMESTAMP
+    let timeSaved = Date.now()
+    // ADD USER ID ON CLICK
+    let id = userSession.getUser()
     let articleInfo = getFormValues(document.querySelector("form"))
+    articleInfo.userId = id
+    articleInfo.timestamp = timeSaved
+    console.log(articleInfo)
     API.saveData("news", articleInfo)
+      .then(() => {    // Clears main container and pulls new news dashboard with additional article.
+        clear()
+        loadNews()
+      })
   })
 }
 
@@ -25,10 +39,9 @@ const addFunctions = {
     newArticleBtn.addEventListener("click", () => {
       let newsEditor = new Form("Add Article", "news-editor", newsInputs.articleInputs)
       let newsEdit = newsEditor.build()
-      newsEdit.render("article.container")
+      newsEdit.render(".form-container")
       newArticleBtn.classList.add("hide")
       addNewArticle()
-      loadNews()
     })
   }
 }

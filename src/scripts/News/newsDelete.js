@@ -1,4 +1,4 @@
 /*
   author(s): Elyse
-  purpose: Functions related to editing articles in the database.
+  purpose: Functions related to deleting articles in the database.
 */
