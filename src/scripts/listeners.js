@@ -7,6 +7,7 @@ import loadMessages from "./Message/msgOutput"
 import welcomePage from "./login/welcome"
 import API from "./api"
 import userSession from "./sessionStorage"
+import landingPage from "./login/landing";
 
 // Grab nav elements
 const friendsNav = document.getElementById("friends")
@@ -43,13 +44,17 @@ let navListeners = () => {
   })
   logoutNav.addEventListener("click", () => {
     clear()
-    mainContainer.innerHTML = "<h>GET OUT WE DON'T WANT YOU ANYWAY!</h>"
+    userSession.logOutUser()
+    landingPage()
   })
   logo.addEventListener("click", () => {
-    clear()
-    API.getData(`users/${userSession.getUser()}`).then((users) => {
-      welcomePage(users.displayName)
-    })
+    // Only load welcome page if a user is logged in.
+    if(userSession.getUser()) {
+      clear()
+      API.getData(`users/${userSession.getUser()}`).then((users) => {
+        welcomePage(users.displayName)
+      })
+    }
   })
 }
 

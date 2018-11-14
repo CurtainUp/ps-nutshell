@@ -4,8 +4,6 @@ import getFormValues from "../getFormValues"
 import validate from "./../validate"
 import clear from "./../clear"
 
-const mainContainer = document.querySelector(".main-container")
-
 let loginInputs = [
   ["email", "email", "E-mail Address"],
   ["password", "password", "Password"],
