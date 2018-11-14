@@ -12,7 +12,7 @@ const deleteFunctions = {
     deleteButton.forEach(button => {
       button.addEventListener("click", function () {
         // Uses id of database article to fetch information
-        API.deleteData("news", `${event.currentTarget.parentNode.id}`)
+        API.deleteData("news", `${event.currentTarget.parentNode.parentNode.parentNode.id}`)
           .then(() => {    // Clears main container and pulls new news dashboard with additional article.
             clear()
             loadNews()
@@ -22,4 +22,4 @@ const deleteFunctions = {
   }
 }
 
-  export default deleteFunctions
+export default deleteFunctions
