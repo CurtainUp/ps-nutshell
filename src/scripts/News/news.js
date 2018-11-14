@@ -20,7 +20,7 @@ class News {
     // TO DO: Find a way to dynamically add link to title text
     let newsTitle = new DOMComponent("span", { classList: "title" }, `<a href=${this.url}>${this.title}</a>`)
     let newsSummary = new DOMComponent("p", { classList: "summary" }, this.summary)
-    let newsTime = new DOMComponent("p", { classList: "time" }, this.timestamp)
+    let newsTime = new DOMComponent("p", { classList: "time" }, moment(`${this.timestamp}`).format("MM-DD-YYYY"))
     let newsEdit = new DOMComponent("button", { classList: "edit-button btn-small waves-effect waves-light"}, "Edit")
     let newsDelete = new DOMComponent("button", { classList: "delete-button btn-small waves-effect waves-light"}, "Delete")
     let newsSection = new DOMComponent("li", { classList: "collection-item avatar", id: this.id }, newsIcon, newsTitle, newsSummary, newsTime, newsEdit, newsDelete)
