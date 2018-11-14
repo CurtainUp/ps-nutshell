@@ -32,14 +32,14 @@ const editMsg = {
 
   addInput(container) {
     let wrapper = document.createElement("div")
-    wrapper.classList = "edit-message__wrapper"
+    wrapper.classList = "edit-message__wrapper valign-wrapper"
 
     let input = document.createElement("input")
     input.setAttribute("type", "text")
     input.setAttribute("id", "message__input")
 
     let submit = document.createElement("a")
-    submit.classList = "btn-floating pulse waves-effect waves-light right"
+    submit.classList = "btn-floating btn-small pulse waves-effect waves-light right"
 
     let icon = document.createElement("i")
     icon.classList = "material-icons"

@@ -15,11 +15,58 @@
   font-size: 80%;
 }
 
+.message--currentUser .message__info {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.message--currentUser .message__username {
+  margin-left: 8px;
+}
+:not(.message--currentUser) .message__username {
+  margin-right: 4px;
+}
+
 .message__text {
   margin-top: 4px;
   margin-right: 0;
 }
 
+.message__text.chip {
+  min-height: 32px;
+  line-height: 1.4;
+  height: auto;
+  padding: 7px 14px;
+  max-width: 85%;
+}
+
+.message__edited {
+  opacity: 0.5;
+  margin-left: 3px;
+}
+
 .message--currentUser .message__text {
   margin-left: 10px;
 }
+
+.messages .collection {
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+
+.message__edit {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+}
+
+.message--currentUser:hover .message__edit {
+  visibility: visible;
+  opacity: 1;
+}
+
+#message__input {
+  width: 90%;
+  margin-right: 15px;
+}
+

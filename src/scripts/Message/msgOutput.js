@@ -47,7 +47,8 @@ function loadMessages() {
       const section = new DOMComponent("section", {classList: "messages container"}, header, msgsRow, msgForm)
 
       section.render(".main-container")
-
+      let scrollBox = document.querySelector(".messages .collection")
+      scrollBox.scrollTop = scrollBox.scrollHeight;
       msgFormListener()
       editMsg.addListeners()
     })

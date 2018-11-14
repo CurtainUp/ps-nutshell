@@ -21,6 +21,8 @@
         "grunt-eslint": "^21.0.0",
         "grunt-http-server": "^2.1.0",
         "load-grunt-config": "^0.19.2",
+        "moment": "^2.22.2",
         "nss-domcomponent": "^0.1.3"
-    }
+    },
+    "dependencies": {}
 }
