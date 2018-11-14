@@ -3,7 +3,6 @@ import navListeners from "./listeners"
 import welcomePage from "./login/welcome"
 import API from "./api.js"
 import userSession from "./sessionStorage"
-import loadMessages from "./Message/msgOutput"
 
 // userSession.logOutUser()
 
