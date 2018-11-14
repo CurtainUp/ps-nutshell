@@ -13,6 +13,7 @@ import userSession from "../sessionStorage"
 
 
 function addNewArticle() {
+  // Add Button Functionality - Posts entry to database and reload page with fresh article list
   let saveArticleBtn = document.querySelector("#formSubmit")
   saveArticleBtn.addEventListener("click", (e) => {
     e.preventDefault()
@@ -29,6 +30,13 @@ function addNewArticle() {
         clear()
         loadNews()
       })
+  })
+  // Back Button Functionality - Hides form and shows Add Article button
+  let backBtn = document.querySelector("#back-button")
+  backBtn.addEventListener("click", (e) => {
+    e.preventDefault()
+    clear()
+    loadNews()
   })
 }
 
