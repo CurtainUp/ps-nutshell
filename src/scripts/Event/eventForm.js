@@ -11,10 +11,15 @@ import eventPage from "./eventOutput"
 import userSession from "./../sessionStorage"
 
 let inputs = [
-  ["text", "name", "Event Name"], ["text", "location", "Location"], ["text", "datepicker", "Date"], ["submit", "saveBtn", "Save"]
+  ["text", "name", "Event Name"], ["text", "location", "Location"], ["text", "datepicker-main", "Date"], ["submit", "saveBtn", "Save"]
+]
+
+let editInputs = [
+  ["text", "name-edit", "Event Name"], ["text", "location-edit", "Location"], ["text", "datepicker-edit", "Date"], ["submit", "saveBtn-edit", "Save"]
 ]
 
 const EventForm = new Form("Add an Event", "formContainer", inputs).build()
+const editEventForm = new Form("", "editFormContainer", editInputs).build()
 
 const mainContainer = document.querySelector(".main-container")
 
@@ -40,7 +45,7 @@ const eventFormBuilder = {
   eventFormRender() {
     mainContainer.innerHTML = null
     EventForm.render(".main-container")
-    document.getElementById("datepicker").setAttribute("class", "datepicker")
+    document.getElementById("datepicker-main").setAttribute("class", "datepicker")
     document.querySelector(".header").classList.add("center")
   },
   eventFormListener() {
@@ -55,7 +60,7 @@ const eventFormBuilder = {
     })
   },
   formInput() {
-    const dateValue = document.getElementById("datepicker").value
+    const dateValue = document.getElementById("datepicker-main").value
     const nameValue = document.getElementById("name").value
     const locationValue = document.getElementById("location").value
     let eventObject = {
@@ -70,6 +75,22 @@ const eventFormBuilder = {
     document.getElementById("datepicker").value = ""
     document.getElementById("name").value = ""
     document.getElementById("location").value = ""
+  },
+  editFormRender(container) {
+    editEventForm.render(container)
+    document.getElementById("datepicker-edit").setAttribute("class", "datepicker")
+  },
+  editFormInput() {
+    const dateValue = document.getElementById("datepicker-edit").value
+    const nameValue = document.getElementById("name-edit").value
+    const locationValue = document.getElementById("location-edit").value
+    let eventObject = {
+      name: nameValue,
+      userId: currentUser,
+      location: locationValue,
+      date: dateValue
+    }
+    return eventObject
   }
 }
 
