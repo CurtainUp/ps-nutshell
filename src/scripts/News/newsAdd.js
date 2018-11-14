@@ -10,7 +10,7 @@ import getFormValues from "../getFormValues"
 import loadNews from "./newsOutput"
 import clear from "../clear"
 import userSession from "../sessionStorage"
-
+import moment from "moment"
 
 function addNewArticle() {
   // Add Button Functionality - Posts entry to database and reload page with fresh article list
@@ -18,7 +18,8 @@ function addNewArticle() {
   saveArticleBtn.addEventListener("click", (e) => {
     e.preventDefault()
     // ADD TIMESTAMP
-    let timeSaved = Date.now()
+    let timeSaved = moment(new Date())
+    console.log(timeSaved)
     // ADD USER ID ON CLICK
     let id = userSession.getUser()
     let articleInfo = getFormValues(document.querySelector("form"))

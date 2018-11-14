@@ -7,7 +7,7 @@ import DOMComponent from "nss-domcomponent"
 import addFunctions from "./newsAdd"
 import News from "./news"
 import API from "../api"
-import editFunctions from "./newsEdit"
+// import editFunctions from "./newsEdit"
 import userSession from "../sessionStorage"
 import deleteFunctions from "./newsDelete"
 
@@ -25,7 +25,7 @@ function grabUserArticles() {
       let section = new DOMComponent("section", { classList: "container" }, ul)
       section.render(".main-container")
       // Adds event listeners to buttons.
-      editFunctions.editListener()
+      // editFunctions.editListener()
       deleteFunctions.deleteListener()
     })
 }

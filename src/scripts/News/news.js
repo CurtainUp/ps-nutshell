@@ -3,7 +3,7 @@
   purpose: defines a class that builds a single news element
 */
 import DOMComponent from "nss-domcomponent"
-
+import moment from "moment"
 class News {
   constructor(article) {
     this.title = article.title,
@@ -21,20 +21,11 @@ class News {
     let newsTitle = new DOMComponent("span", { classList: "title" }, `<a href=${this.url}>${this.title}</a>`)
     let newsSummary = new DOMComponent("p", { classList: "summary" }, this.summary)
     let newsTime = new DOMComponent("p", { classList: "time" }, moment(`${this.timestamp}`).format("MM-DD-YYYY"))
-    let newsEdit = new DOMComponent("button", { classList: "edit-button btn-small waves-effect waves-light"}, "Edit")
+    // let newsEdit = new DOMComponent("button", { classList: "edit-button btn-small waves-effect waves-light"}, "Edit")
     let newsDelete = new DOMComponent("button", { classList: "delete-button btn-small waves-effect waves-light"}, "Delete")
-    let newsSection = new DOMComponent("li", { classList: "collection-item avatar", id: this.id }, newsIcon, newsTitle, newsSummary, newsTime, newsEdit, newsDelete)
+    let newsSection = new DOMComponent("li", { classList: "collection-item avatar", id: this.id }, newsIcon, newsTitle, newsSummary, newsTime, newsDelete)
     return newsSection
   }
 }
-
-//-----TEST CODE: Copy the following to main.js test functionality------------
-// import News from "./News/news"
-// let testNews = new News("Nutshell News", "all the happenings at nutshell HQ", "November 10, 2018", "https://www.vox.com", 1)
-// let testNews2 = new News("Second Time Around", "People want MORE nutshell", "November 11, 2018", "https://www.vox.com", 2)
-
-// testNews.buildNewsElement()
-// testNews2.buildNewsElement()
-// -----------END TEST CODE-----------------------------
 
 export default News
