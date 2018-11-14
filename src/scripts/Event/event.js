@@ -8,7 +8,7 @@ import userSession from "./../sessionStorage"
 import eventFormBuilder from "./eventForm"
 import eventPage from "./eventOutput"
 
-const currentUser = userSession.getUser()
+
 
 const domEvents = {
   buildEvent(object) {
@@ -27,6 +27,7 @@ const domEvents = {
     return Event
   },
   renderEvents() {
+    const currentUser = userSession.getUser()
     return API.getData(`events?userId=${currentUser}`).then((eventList) => {
       let events = []
       eventList.forEach((event) => {
