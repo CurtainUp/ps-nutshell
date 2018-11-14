@@ -7,11 +7,11 @@ import eventPage from "./Event/eventOutput"
 import eventFormBuilder from "./Event/eventForm"
 import loadMessages from "./Message/msgOutput"
 import welcomePage from "./login/welcome"
-import API from "./api"
 import userSession from "./sessionStorage"
+import landingPage from "./login/landing";
 
 // Grab nav elements
-const friendsNav = document.getElementById("friends")
+
 const chatNav = document.getElementById("chat")
 const todoNav = document.getElementById("todo")
 const eventsNav = document.getElementById("events")
@@ -23,36 +23,47 @@ const mainContainer = document.querySelector(".main-container")
 
 // adds event listeners to each nav element
 let navListeners = () => {
-  friendsNav.addEventListener("click", () => {
-    clear()
-    mainContainer.innerHTML = "<h>Your Friends</h>"
-  })
+
   chatNav.addEventListener("click", () => {
     clear()
     loadMessages()
+    document.querySelectorAll("nav li").forEach(el => el.classList.remove("teal"))
+    chatNav.parentNode.classList.add("teal")
   })
   todoNav.addEventListener("click", () => {
     clear()
     mainContainer.innerHTML = "<h>Your To Do List</h>"
+    document.querySelectorAll("nav li").forEach(el => el.classList.remove("teal"))
+    todoNav.parentNode.classList.add("teal")
   })
   eventsNav.addEventListener("click", () => {
     clear()
     eventPage()
     eventFormBuilder.eventFormListener()
+    document.querySelectorAll("nav li").forEach(el => el.classList.remove("teal"))
+    eventsNav.parentNode.classList.add("teal")
   })
   newsNav.addEventListener("click", () => {
     clear()
     mainContainer.innerHTML = "<h>Your News</h>"
+    document.querySelectorAll("nav li").forEach(el => el.classList.remove("teal"))
+    newsNav.parentNode.classList.add("teal")
   })
   logoutNav.addEventListener("click", () => {
     clear()
-    mainContainer.innerHTML = "<h>GET OUT WE DON'T WANT YOU ANYWAY!</h>"
+    userSession.logOutUser()
+    landingPage()
+    document.querySelectorAll("nav li").forEach(el => el.classList.remove("teal"))
+
   })
   logo.addEventListener("click", () => {
-    clear()
-    API.getData(`users/${userSession.getUser()}`).then((users) => {
-      welcomePage(users.displayName)
-    })
+    // Only load welcome page if a user is logged in.
+    if(userSession.getUser()) {
+      clear()
+      welcomePage()
+    }
+    document.querySelectorAll("nav li").forEach(el => el.classList.remove("teal"))
+
   })
 }
 

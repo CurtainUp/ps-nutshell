@@ -4,8 +4,6 @@ import getFormValues from "../getFormValues"
 import validate from "./../validate"
 import clear from "./../clear"
 
-const mainContainer = document.querySelector(".main-container")
-
 let loginInputs = [
   ["email", "email", "E-mail Address"],
   ["password", "password", "Password"],
@@ -18,24 +16,31 @@ const loginForm = new Form("Login", "loginForm", loginInputs).build()
 function loginPage() {
   clear()
   loginForm.render(".main-container")
-
+  let backBtn = document.querySelector("#backBtn")
+  let loginClick = document.querySelector("#loginForm")
   /* Back Button Functionality */
-  document.querySelector("#backBtn").setAttribute("formnovalidate", true)
-  document.querySelector("#backBtn").addEventListener("click", e => {
-    e.preventDefault()
-    landingPage()
-  })
+  backBtn.setAttribute("formnovalidate", true)
 
+  if (!backBtn.hasAttribute("data-listener")) {
+    backBtn.addEventListener("click", e => {
+      e.preventDefault()
+      landingPage()
+    })
+    backBtn.setAttribute("data-listener", "true")
+  }
   /* Submit Button Functionality */
-  document.querySelector("#loginForm").addEventListener("click", e => {
-    e.preventDefault()
-    if (e.target.id === "loginBtn") {
-      let loginValues = getFormValues(e.target.parentNode.parentNode.parentNode)
-      validate.existingUser(loginValues)
-      let navButtons = document.querySelectorAll(".hide")
-      navButtons.forEach((item) => { item.className = "" })
-    }
-  })
+
+  if (!loginClick.hasAttribute("data-listener")) {
+    loginClick.addEventListener("click", e => {
+      e.preventDefault()
+      if (e.target.id === "loginBtn") {
+        let loginValues = getFormValues(e.target.parentNode.parentNode.parentNode)
+        validate.existingUser(loginValues)
+        loginClick.reset()
+      }
+    })
+    loginClick.setAttribute("data-listener", "true")
+  }
 }
 
 export default loginPage
