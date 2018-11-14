@@ -2,6 +2,7 @@
   author(s): Elyse
   purpose: Event listeners for section navigation
 */
+import loadNews from "./News/newsOutput"
 import clear from "./clear"
 import eventPage from "./Event/eventOutput"
 import eventFormBuilder from "./Event/eventForm"
@@ -45,7 +46,7 @@ let navListeners = () => {
   })
   newsNav.addEventListener("click", () => {
     clear()
-    mainContainer.innerHTML = "<h>Your News</h>"
+    loadNews()
     document.querySelectorAll("nav li").forEach(el => el.classList.remove("teal"))
     newsNav.parentNode.classList.add("teal")
   })

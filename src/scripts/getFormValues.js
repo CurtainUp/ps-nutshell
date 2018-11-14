@@ -10,7 +10,6 @@ let getFormValues = (target) => {
   set value of formDivs to an iterable node list of all input fields
   */
   let formDivs = target.querySelectorAll(".input-field")
-
   // create object to return
   let formValuesObj = {}
 

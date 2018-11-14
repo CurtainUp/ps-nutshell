@@ -5,7 +5,6 @@ import welcomePage from "./login/welcome"
 
 // userSession.logOutUser()
 
-
 if (window.sessionStorage.length === 0) {
   landingPage()
 } else {
