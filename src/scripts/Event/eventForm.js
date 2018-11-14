@@ -51,12 +51,14 @@ const eventFormBuilder = {
     if (!button.hasAttribute("data-listener")) {
       button.setAttribute("data-listener", "true")
       button.addEventListener("click", e => {
-        e.preventDefault()
-        let eventObject = this.formInput()
-        API.saveData("events", eventObject).then(() => { eventPage() })
-        document.querySelector("#formContainer").classList.add("hide")
-        document.querySelector("#addEvent").classList.remove("hide")
-        this.resetForm()
+        if (button.parentNode.parentNode.parentNode.checkValidity()) {
+          e.preventDefault()
+          let eventObject = this.formInput()
+          API.saveData("events", eventObject).then(() => { eventPage() })
+          document.querySelector("#formContainer").classList.add("hide")
+          document.querySelector("#addEvent").classList.remove("hide")
+          this.resetForm()
+        }
       })
     }
   },
