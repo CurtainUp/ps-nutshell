@@ -36,8 +36,6 @@ function loginPage() {
       if (e.target.id === "loginBtn") {
         let loginValues = getFormValues(e.target.parentNode.parentNode.parentNode)
         validate.existingUser(loginValues)
-        let navButtons = document.querySelectorAll(".hide")
-        navButtons.forEach((item) => { item.classList.remove("hide") })
         loginClick.reset()
       }
     })
