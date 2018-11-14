@@ -7,7 +7,6 @@ import eventPage from "./Event/eventOutput"
 import eventFormBuilder from "./Event/eventForm"
 import loadMessages from "./Message/msgOutput"
 import welcomePage from "./login/welcome"
-import API from "./api"
 import userSession from "./sessionStorage"
 import landingPage from "./login/landing";
 

@@ -4,6 +4,9 @@ import clear from "../clear"
 import loadMessages from "./../Message/msgOutput"
 import userSession from "./../sessionStorage"
 import API from "./../api"
+import eventPage from "./../Event/eventOutput"
+import eventFormBuilder from "./../Event/eventForm"
+
 const mainContainer = document.querySelector(".main-container")
 
 class Row extends DOMComponent {
@@ -50,7 +53,8 @@ let welcomePage = () => {
     let eventsNav = document.getElementById("eventsNavBtn")
     eventsNav.addEventListener("click", () => {
       clear()
-      mainContainer.innerHTML = "<h>Your Events</h>"
+      eventPage()
+      eventFormBuilder.eventFormListener()
     })
 
     let newsNav = document.getElementById("newsNavBtn")
