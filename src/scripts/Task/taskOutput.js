@@ -4,7 +4,6 @@
 */
 import taskListeners from "./taskListeners"
 import renderTaskForm from "./taskForm"
-import DOMComponent from "nss-domcomponent"
 import clear from "../clear";
 
 
@@ -13,7 +12,6 @@ import clear from "../clear";
 const taskPage = () => {
   clear()
   renderTaskForm()
-  // showTaskFormBtn.render(".main-container")
   taskListeners.renderTasks()
   taskListeners.addTaskListeners()
 }

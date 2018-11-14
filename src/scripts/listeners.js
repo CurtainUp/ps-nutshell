@@ -33,6 +33,7 @@ let navListeners = () => {
   })
   todoNav.addEventListener("click", () => {
     clear()
+
     taskPage()
   })
   eventsNav.addEventListener("click", () => {
