@@ -18,12 +18,15 @@ class News {
   buildNewsElement() {
     let newsIcon = new DOMComponent("i", { classList: "material-icons circle" }, "subtitles")
     // TO DO: Find a way to dynamically add link to title text
-    let newsTitle = new DOMComponent("span", { classList: "title" }, `<a href=${this.url}>${this.title}</a>`)
+    // let newsTitle = new DOMComponent("span", { classList: "title" })
+    let newsTitle = new DOMComponent("a", {href: `${this.url}`}, `${this.title}`)
     let newsSummary = new DOMComponent("p", { classList: "summary" }, this.summary)
     let newsTime = new DOMComponent("p", { classList: "time" }, moment(`${this.timestamp}`).format("MM-DD-YYYY"))
     // let newsEdit = new DOMComponent("button", { classList: "edit-button btn-small waves-effect waves-light"}, "Edit")
-    let newsDelete = new DOMComponent("button", { classList: "delete-button btn-small waves-effect waves-light"}, "Delete")
-    let newsSection = new DOMComponent("li", { classList: "collection-item avatar", id: this.id }, newsIcon, newsTitle, newsSummary, newsTime, newsDelete)
+    let newsDelete = new DOMComponent("i", { classList: "material-icons delete", textContent: "delete_forever"})
+    let newsDeleteStyle = new DOMComponent("a", { className: "btn-floating btn-small waves-effect waves-light " }, newsDelete)
+    let deleteDiv = new DOMComponent("div", { className: "secondary-content" }, newsDeleteStyle)
+    let newsSection = new DOMComponent("li", { classList: "collection-item avatar", id: this.id }, newsIcon, newsTitle, newsSummary, newsTime, deleteDiv)
     return newsSection
   }
 }

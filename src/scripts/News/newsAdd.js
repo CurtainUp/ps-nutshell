@@ -19,13 +19,11 @@ function addNewArticle() {
     e.preventDefault()
     // ADD TIMESTAMP
     let timeSaved = moment(new Date())
-    console.log(timeSaved)
     // ADD USER ID ON CLICK
     let id = userSession.getUser()
     let articleInfo = getFormValues(document.querySelector("form"))
     articleInfo.userId = id
     articleInfo.timestamp = timeSaved
-    console.log(articleInfo)
     API.saveData("news", articleInfo)
       .then(() => {    // Clears main container and pulls new news dashboard with additional article.
         clear()

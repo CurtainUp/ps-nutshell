@@ -8,7 +8,7 @@ import loadNews from "./newsOutput"
 
 const deleteFunctions = {
   deleteListener() {
-    let deleteButton = document.querySelectorAll(".delete-button")
+    let deleteButton = document.querySelectorAll(".delete")
     deleteButton.forEach(button => {
       button.addEventListener("click", function () {
         // Uses id of database article to fetch information

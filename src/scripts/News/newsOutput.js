@@ -13,7 +13,7 @@ import deleteFunctions from "./newsDelete"
 
 function grabUserArticles() {
   // Fetches saved articles
-  API.getData(`news?userId=${userSession.getUser()}`)
+  API.getData(`news?userId=${userSession.getUser()}&_sort=timestamp&_order=desc`)
     // Turns saved articles into instances of News class
     .then(newsArray => {
       let savedArticles = []
