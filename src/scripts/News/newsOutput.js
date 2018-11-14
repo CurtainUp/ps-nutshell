@@ -6,14 +6,15 @@
 import DOMComponent from "nss-domcomponent"
 import addFunctions from "./newsAdd"
 import News from "./news"
-import editFunctions from "./newsEdit"
 import API from "../api"
+import editFunctions from "./newsEdit"
 import userSession from "../sessionStorage"
+import deleteFunctions from "./newsDelete"
 
 function grabUserArticles() {
   // Fetches saved articles
   API.getData(`news?userId=${userSession.getUser()}`)
-  // Turns saved articles into instances of News class
+    // Turns saved articles into instances of News class
     .then(newsArray => {
       let savedArticles = []
       newsArray.forEach(item => {
@@ -23,12 +24,9 @@ function grabUserArticles() {
       let ul = new DOMComponent("ul", { classList: "collection" }, ...savedArticles)
       let section = new DOMComponent("section", { classList: "container" }, ul)
       section.render(".main-container")
-      // build and render each instance to the DOM
-      // savedArticles.forEach(i => {
-      //   i.buildNewsElement().render("ul.collection")
-      // })
       // Adds event listeners to buttons.
       editFunctions.editListener()
+      deleteFunctions.deleteListener()
     })
 }
 
@@ -36,7 +34,7 @@ function grabUserArticles() {
 function loadNews() {
   let createArticleBtn = new DOMComponent("button", { classList: "article-button btn-large waves-effect waves-light" }, "Add Article")
   createArticleBtn.render("article.container")
-  let formContainer = new DOMComponent("section", {classList: "form-container"})
+  let formContainer = new DOMComponent("section", { classList: "form-container" })
   formContainer.render(".main-container")
   grabUserArticles()
   addFunctions.newArticleListener()
