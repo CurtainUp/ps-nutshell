@@ -6,12 +6,9 @@ import clear from "./clear"
 import eventPage from "./Event/eventOutput"
 import eventFormBuilder from "./Event/eventForm"
 import loadMessages from "./Message/msgOutput"
-<<<<<<< HEAD
 import taskPage from "./Task/taskOutput"
 import API from "./api"
-=======
 import welcomePage from "./login/welcome"
->>>>>>> master
 import userSession from "./sessionStorage"
 import landingPage from "./login/landing";
 

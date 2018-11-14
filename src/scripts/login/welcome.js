@@ -6,6 +6,7 @@ import userSession from "./../sessionStorage"
 import API from "./../api"
 import eventPage from "./../Event/eventOutput"
 import eventFormBuilder from "./../Event/eventForm"
+import taskPage from "../Task/taskOutput";
 
 const mainContainer = document.querySelector(".main-container")
 
@@ -40,8 +41,8 @@ let welcomePage = () => {
     let toDoNav = document.getElementById("toDoNavBtn")
     toDoNav.addEventListener("click", () => {
       clear()
+      taskPage()
       document.querySelector("nav #todo").parentNode.classList.add("teal")
-      mainContainer.innerHTML = "<h>Your To Do List</h>"
     })
 
     let eventsNav = document.getElementById("eventsNavBtn")
