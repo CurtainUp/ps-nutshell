@@ -22,10 +22,10 @@ const taskListeners = {
   },
 
   addTaskListeners() {
-    let collection = document.querySelector(".main-container")
+    const collection = document.querySelector(".main-container")
     if (!collection.hasAttribute("data-listener")) {
+      collection.setAttribute("data-listener", "true")
       collection.addEventListener("click", (e) => {
-        collection.setAttribute("data-listener", "true")
         if (e.target.classList.contains("delete-button")) {
           clear(".task__list--container")
           API.deleteData("tasks", e.target.parentElement.id.split("-")[1]).then((response) => {
@@ -108,7 +108,7 @@ const taskListeners = {
 
     collectonContainer.render(".main-container")
     API.getData(`tasks?userId=${userSession.getUser()}`).then((tasks) => {
-      if(document.querySelector(".task__list--container")){
+      if (document.querySelector(".task__list--container")) {
         clear(".task__list--container")
       }
       let uniqueTask = 0
