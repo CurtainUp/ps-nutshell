@@ -24,7 +24,6 @@ const taskListeners = {
   addTaskListeners() {
     let collection = document.querySelector(".main-container")
     collection.addEventListener("click", (e) => {
-      console.log(e.target)
 
       if (e.target.classList.contains("delete-button")) {
         console.log("delete")
@@ -36,11 +35,28 @@ const taskListeners = {
       }
 
       if (e.target.classList.contains("save-button")) {
-        console.log("save")
+        clear(".task__list--container")
+
+        e.target.classList.add("hide")
+        e.target.previousSibling.classList.remove("hide")
+
+        let taskName = e.target.previousSibling.previousSibling.previousSibling.previousSibling
+        taskName.setAttribute("contenteditable", false)
+
+        let nameObj = {name: taskName.textContent}
+        let nameId = e.target.parentElement.id.split("-")[1]
+
+        API.editData("tasks", nameObj, nameId).then((response) => {
+          taskListeners.renderTasks()
+        })
       }
 
       if (e.target.classList.contains("edit-button")) {
-        console.log("edit")
+        e.target.classList.add("hide")
+        e.target.nextSibling.classList.remove("hide")
+        let title = e.target.previousSibling.previousSibling.previousSibling
+        title.setAttribute("contenteditable", true)
+        title.focus()
       }
 
       if (e.target.classList.contains("status__radio--container")) {
