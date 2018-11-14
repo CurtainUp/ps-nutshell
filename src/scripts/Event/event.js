@@ -13,9 +13,9 @@ import eventPage from "./eventOutput"
 const domEvents = {
   buildEvent(object) {
     const IconMain = new DOMComponent("i", { className: "material-icons circle", textContent: "date_range" })
-    const Span = new DOMComponent("span", { className: "event grey-text text-darken-1", textContent: `${object.date}` })
-    const H5 = new DOMComponent("h5", { textContent: `${object.name}` })
-    const P = new DOMComponent("p", { textContent: `${object.location}` })
+    const Span = new DOMComponent("span", { className: "event grey-text text-darken-1 dateText", textContent: `${object.date}` })
+    const H5 = new DOMComponent("h5", { className: "grey-text nameText", textContent: `${object.name}` })
+    const P = new DOMComponent("p", { className: "grey-text locationText", textContent: `${object.location}` })
 
     const IconEdit = new DOMComponent("i", { className: "material-icons edit", textContent: "edit" })
     const IconDelete = new DOMComponent("i", { className: "material-icons delete", textContent: "delete_forever" })
@@ -28,7 +28,7 @@ const domEvents = {
   },
   renderEvents() {
     const currentUser = userSession.getUser()
-    return API.getData(`events?userId=${currentUser}`).then((eventList) => {
+    return API.getData(`events?userId=${currentUser}&_sort=date&_order=asc`).then((eventList) => {
       let events = []
       eventList.forEach((event) => {
         let eventDOM = this.buildEvent(event)
@@ -38,6 +38,12 @@ const domEvents = {
       const BottomSection = new DOMComponent("section", { className: "container events" }, Ul)
 
       BottomSection.render(".main-container")
+      document.querySelectorAll(".collection-item")[0].classList.add("teal")
+      document.querySelectorAll(".collection-item")[0].classList.add("lighten-4")
+      document.querySelectorAll(".dateText")[0].classList.remove("grey-text")
+      document.querySelectorAll(".nameText")[0].classList.remove("grey-text")
+      document.querySelectorAll(".locationText")[0].classList.remove("grey-text")
+
     })
   },
   editListeners() {
