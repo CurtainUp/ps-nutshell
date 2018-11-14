@@ -5,7 +5,7 @@ import Task from "./task"
 import clear from "../clear";
 
 let taskIcon = new DOMComponent("i", { classList: "material-icons circle clear" }, "clear")
-let collectonContainer = new DOMComponent("div", { classList: "container task__list--container" })
+let collectonContainer = new DOMComponent("ul", { classList: "container task__list--container title" }, "My To Do List:" )
 let showTaskFormBtn = new DOMComponent("button", { classList: "add-task-button btn-small waves-effect waves-light" }, "Add Task")
 
 
@@ -26,10 +26,8 @@ const taskListeners = {
     collection.addEventListener("click", (e) => {
 
       if (e.target.classList.contains("delete-button")) {
-        console.log("delete")
         clear(".task__list--container")
         API.deleteData("tasks", e.target.parentElement.id.split("-")[1]).then((response) => {
-          console.log(response)
           taskListeners.renderTasks()
         })
       }
@@ -43,7 +41,7 @@ const taskListeners = {
         let taskName = e.target.previousSibling.previousSibling.previousSibling.previousSibling
         taskName.setAttribute("contenteditable", false)
 
-        let nameObj = {name: taskName.textContent}
+        let nameObj = { name: taskName.textContent }
         let nameId = e.target.parentElement.id.split("-")[1]
 
         API.editData("tasks", nameObj, nameId).then((response) => {
@@ -65,7 +63,6 @@ const taskListeners = {
           clear(".task__list--container")
           let taskId = e.target.parentElement.parentElement.parentElement.parentElement.id.split("-")[1]
           let progessObj = { status: 2 }
-          console.log("IM THE ID", taskId)
           API.editData("tasks", progessObj, taskId).then((response) => {
             taskListeners.renderTasks()
           })
@@ -73,13 +70,11 @@ const taskListeners = {
       }
 
       if (e.target.classList.contains("add-task-button")) {
-        console.log("add task")
         document.querySelector("#formContainer").classList.remove("hide")
         document.querySelector(".add-task-button").classList.add("hide")
       }
 
       if (e.target.classList.contains("clear")) {
-        console.log("close form")
         document.querySelector("#formContainer").classList.toggle("hide")
         document.querySelector(".add-task-button").classList.toggle("hide")
       }

@@ -4,6 +4,7 @@ import getFormValues from "../getFormValues"
 import userSession from "../sessionStorage"
 import clear from "../clear"
 import API from "./../api"
+import taskListeners from "./taskListeners"
 const mainContainer = document.querySelector(".main-container")
 
 let taskInputs = [
@@ -30,11 +31,14 @@ let renderTaskForm = () => {
     taskObj.userId = userSession.getUser()
 
     if(taskObj.name !== "" && taskObj.dueBy != ""){
-      API.saveData("tasks", taskObj)
-      document.querySelector("#formContainer").classList.toggle("hide")
-      document.querySelector(".add-task-button").classList.toggle("hide")
-      document.querySelector("#name").value = ""
-      document.querySelector("#dueBy").value = ""
+      API.saveData("tasks", taskObj).then((response) => {
+        document.querySelector("#formContainer").classList.toggle("hide")
+        document.querySelector(".add-task-button").classList.toggle("hide")
+        document.querySelector("#name").value = ""
+        document.querySelector("#dueBy").value = ""
+        clear(".task__list--container")
+        taskListeners.renderTasks()
+      })
     } else {
       alert("Oops! Please complete task fields")
     }
