@@ -3,6 +3,10 @@
   purpose: Event listeners for section navigation
 */
 import clear from "./clear"
+import loadMessages from "./Message/msgOutput"
+import welcomePage from "./login/welcome"
+import API from "./api"
+import userSession from "./sessionStorage"
 
 // Grab nav elements
 const friendsNav = document.getElementById("friends")
@@ -11,6 +15,7 @@ const todoNav = document.getElementById("todo")
 const eventsNav = document.getElementById("events")
 const newsNav = document.getElementById("news")
 const logoutNav = document.getElementById("logout")
+const logo = document.querySelector(".brand-logo")
 
 const mainContainer = document.querySelector(".main-container")
 
@@ -22,7 +27,7 @@ let navListeners = () => {
   })
   chatNav.addEventListener("click", () => {
     clear()
-    mainContainer.innerHTML = "<h>Your Chat</h>"
+    loadMessages()
   })
   todoNav.addEventListener("click", () => {
     clear()
@@ -39,6 +44,12 @@ let navListeners = () => {
   logoutNav.addEventListener("click", () => {
     clear()
     mainContainer.innerHTML = "<h>GET OUT WE DON'T WANT YOU ANYWAY!</h>"
+  })
+  logo.addEventListener("click", () => {
+    clear()
+    API.getData(`users/${userSession.getUser()}`).then((users) => {
+      welcomePage(users.displayName)
+    })
   })
 }
 
