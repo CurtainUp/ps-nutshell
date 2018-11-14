@@ -24,25 +24,28 @@ let renderTaskForm = () => {
   document.querySelector("#name").classList.add("input-field")
   document.querySelector("#dueBy").classList.add("input-field")
 
-  saveTaskBtn.addEventListener("click", (e) => {
-    e.preventDefault()
-    let taskObj = getFormValues(e.target.parentNode.parentNode.parentNode)
-    taskObj.status = 1
-    taskObj.userId = userSession.getUser()
+  if (!saveTaskBtn.hasAttribute("data-listener")) {
+    saveTaskBtn.setAttribute("data-listener", "true")
+    saveTaskBtn.addEventListener("click", (e) => {
+      e.preventDefault()
+      let taskObj = getFormValues(e.target.parentNode.parentNode.parentNode)
+      taskObj.status = 1
+      taskObj.userId = userSession.getUser()
 
-    if(taskObj.name !== "" && taskObj.dueBy != ""){
-      API.saveData("tasks", taskObj).then((response) => {
-        document.querySelector("#formContainer").classList.toggle("hide")
-        document.querySelector(".add-task-button").classList.toggle("hide")
-        document.querySelector("#name").value = ""
-        document.querySelector("#dueBy").value = ""
-        clear(".task__list--container")
-        taskListeners.renderTasks()
-      })
-    } else {
-      alert("Oops! Please complete task fields")
-    }
-  })
+      if (taskObj.name !== "" && taskObj.dueBy != "") {
+        API.saveData("tasks", taskObj).then((response) => {
+          document.querySelector("#formContainer").classList.toggle("hide")
+          document.querySelector(".add-task-button").classList.toggle("hide")
+          document.querySelector("#name").value = ""
+          document.querySelector("#dueBy").value = ""
+          clear(".task__list--container")
+          taskListeners.renderTasks()
+        })
+      } else {
+        alert("Oops! Please complete task fields")
+      }
+    })
+  }
 }
 
 export default renderTaskForm
