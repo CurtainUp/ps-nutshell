@@ -8,6 +8,7 @@ import loadMessages from "./msgOutput"
 
 const editMsg = {
 
+  //Adds Event Listeners for the edit button on each message
   addListeners() {
     let userMessages = document.querySelectorAll(".message--currentUser")
 
@@ -19,7 +20,7 @@ const editMsg = {
         if(editToggle.textContent === "Edit") {
           editMsg.addInput(message.querySelector(".col"))
           editToggle.textContent = "Cancel"
-          message.querySelector("#message__input").value = textEl.textContent
+          message.querySelector("#message__input").value = textEl.childNodes[0].textContent
           textEl.classList.add("hide")
         } else {
           editToggle.textContent = "Edit"
@@ -30,6 +31,7 @@ const editMsg = {
     })
   },
 
+  // Builds and appends the input field for editing a message. Called by addListeners()
   addInput(container) {
     let wrapper = document.createElement("div")
     wrapper.classList = "edit-message__wrapper valign-wrapper"
@@ -37,6 +39,8 @@ const editMsg = {
     let input = document.createElement("input")
     input.setAttribute("type", "text")
     input.setAttribute("id", "message__input")
+    input.className = "validate"
+    input.setAttribute("required", true)
 
     let submit = document.createElement("a")
     submit.classList = "btn-floating btn-small pulse waves-effect waves-light right"
@@ -46,7 +50,6 @@ const editMsg = {
     icon.textContent = "send"
     icon.addEventListener("click", e => {
       editMsg.saveEdit(e)
-
     })
 
     submit.appendChild(icon)
@@ -57,7 +60,10 @@ const editMsg = {
     container.appendChild(wrapper)
   },
 
+  // Posts the edited message to the database and then reloads Messages
   saveEdit(e) {
+    // Get to the message wrapper
+
     let message = e.target.parentNode.parentNode.parentNode.parentNode
     let id = message.id.split("-")[1]
     let messageObj = {
