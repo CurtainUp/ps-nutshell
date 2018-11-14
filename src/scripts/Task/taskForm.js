@@ -26,7 +26,7 @@ let renderTaskForm = () => {
   saveTaskBtn.addEventListener("click", (e) => {
     e.preventDefault()
     let taskObj = getFormValues(e.target.parentNode.parentNode.parentNode)
-    taskObj.status = 0
+    taskObj.status = 1
     taskObj.userId = userSession.getUser()
 
     if(taskObj.name !== "" && taskObj.dueBy != ""){

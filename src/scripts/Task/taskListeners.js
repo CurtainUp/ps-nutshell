@@ -25,6 +25,7 @@ const taskListeners = {
     let collection = document.querySelector(".main-container")
     collection.addEventListener("click", (e) => {
       console.log(e.target)
+
       if (e.target.classList.contains("delete-button")) {
         console.log("delete")
         clear(".task__list--container")
@@ -33,20 +34,34 @@ const taskListeners = {
           taskListeners.renderTasks()
         })
       }
+
       if (e.target.classList.contains("save-button")) {
         console.log("save")
       }
+
       if (e.target.classList.contains("edit-button")) {
         console.log("edit")
       }
+
       if (e.target.classList.contains("status__radio--container")) {
-        console.log("status")
+        // console.log("status", e.target.parentElement.parentElement.parentElement.parentElement.id.split("-")[1])
+        if (e.target.textContent === "Done") {
+          clear(".task__list--container")
+          let taskId = e.target.parentElement.parentElement.parentElement.parentElement.id.split("-")[1]
+          let progessObj = { status: 2 }
+          console.log("IM THE ID", taskId)
+          API.editData("tasks", progessObj, taskId).then((response) => {
+            taskListeners.renderTasks()
+          })
+        }
       }
+
       if (e.target.classList.contains("add-task-button")) {
         console.log("add task")
         document.querySelector("#formContainer").classList.remove("hide")
         document.querySelector(".add-task-button").classList.add("hide")
       }
+
       if (e.target.classList.contains("clear")) {
         console.log("close form")
         document.querySelector("#formContainer").classList.toggle("hide")
@@ -70,6 +85,16 @@ const taskListeners = {
       document.querySelector("#formContainer").classList.add("hide")
       taskIcon.render("#formContainer")
       taskListeners.initialStatus(tasks)
+
+      // Hide everything that is marked as done
+      let radios = document.querySelectorAll(".status__radio--container")
+      radios.forEach((radio) => {
+        if (radio.previousElementSibling.hasAttribute("checked") && radio.textContent === "Done") {
+          radio.parentElement.parentElement.parentElement.parentElement.parentElement.classList.add("hide")
+        }
+      })
+
+      // hide all save buttons for future use
       document.querySelectorAll(".save-button").forEach((btn) => {
         btn.classList.add("hide")
       })
