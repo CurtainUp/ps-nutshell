@@ -4,6 +4,10 @@
   margin: 10px;
 }
 
+.brand-logo {
+  margin: 0 20px;
+}
+
 /*---------- Messages ----------*/
 
 .message__username {
