@@ -17,6 +17,18 @@ const taskListeners = {
     let collection = document.querySelector(".task__list--container")
     collection.addEventListener("click", (e)=> {
       console.log(e.target)
+      if(e.target.classList.contains("delete-button")){
+        console.log("delete")
+      }
+      if(e.target.classList.contains("save-button")){
+        console.log("save")
+      }
+      if(e.target.classList.contains("edit-button")){
+        console.log("edit")
+      }
+      if(e.target.classList.contains("status__radio--container")){
+        console.log("status")
+      }
     })
   },
 

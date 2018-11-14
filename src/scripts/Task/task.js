@@ -29,7 +29,7 @@ class Task {
       name: `statusRadio${uniqueTaskStatus}`,
       type: "radio"
     })
-    let statusSpan = new DOMComponent("span", { classList: "container" }, "To Do")
+    let statusSpan = new DOMComponent("span", { classList: "status__radio--container container" }, "To Do")
     let statusLabel = new DOMComponent("label", { classList: "container" }, statusInput, statusSpan)
     let statusRadioContainer = new DOMComponent("p", { classList: "container" }, statusLabel)
 
@@ -38,7 +38,7 @@ class Task {
       name: `statusRadio${uniqueTaskStatus}`,
       type: "radio"
     })
-    let statusSpan2 = new DOMComponent("span", { classList: "container" }, "Doing")
+    let statusSpan2 = new DOMComponent("span", { classList: "status__radio--container container" }, "Doing")
     let statusLabel2 = new DOMComponent("label", { classList: "container" }, statusInput2, statusSpan2)
     let statusRadioContainer2 = new DOMComponent("p", { classList: "container" }, statusLabel2)
 
@@ -47,7 +47,7 @@ class Task {
       name: `statusRadio${uniqueTaskStatus}`,
       type: "radio"
     })
-    let statusSpan3 = new DOMComponent("span", { classList: "container" }, "Done")
+    let statusSpan3 = new DOMComponent("span", { classList: "status__radio--container container" }, "Done")
     let statusLabel3 = new DOMComponent("label", { classList: "container" }, statusInput3, statusSpan3)
     let statusRadioContainer3 = new DOMComponent("p", { classList: "container" }, statusLabel3)
 
