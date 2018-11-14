@@ -24,15 +24,6 @@ class Task {
     let taskTitle = new DOMComponent("span", { classList: "title" }, `${this.name}`)
     let taskDueBy = new DOMComponent("p", { classList: "time" }, `${this.dueBy}`)
 
-    let statusInput = new DOMComponent("input", {
-      classList: "container  status-radio status-radio0",
-      name: `statusRadio${uniqueTaskStatus}`,
-      type: "radio"
-    })
-    // let statusSpan = new DOMComponent("span", { classList: "status__radio--container container" }, "To Do")
-    // let statusLabel = new DOMComponent("label", { classList: "container" }, statusInput, statusSpan)
-    // let statusRadioContainer = new DOMComponent("p", { classList: "container" }, statusLabel)
-
     let statusInput2 = new DOMComponent("input", {
       classList: "container status-radio status-radio1",
       name: `statusRadio${uniqueTaskStatus}`,

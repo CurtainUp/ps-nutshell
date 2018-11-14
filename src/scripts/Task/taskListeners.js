@@ -55,13 +55,11 @@ const taskListeners = {
           e.target.classList.add("hide")
           e.target.nextSibling.classList.remove("hide")
           let title = e.target.previousSibling.previousSibling.previousSibling
-          console.log(title)
           title.addEventListener("keypress", (e) => {
             if (e.key === "Enter") {
               clear(".task__list--container")
               e.target.classList.add("hide")
               e.target.previousSibling.classList.remove("hide")
-              console.log(e)
               title.setAttribute("contenteditable", false)
 
               let nameObj = { name: title.textContent }
