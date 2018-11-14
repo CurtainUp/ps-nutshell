@@ -1,5 +1,13 @@
-
+import DOMComponent from "nss-domcomponent"
 import API from "./../api"
+import userSession from "./../sessionStorage"
+import Task from "./task"
+import clear from "../clear";
+
+let taskIcon = new DOMComponent("i", { classList: "material-icons circle clear" }, "clear")
+let collectonContainer = new DOMComponent("div", { classList: "container task__list--container" })
+let showTaskFormBtn = new DOMComponent("button", { classList: "add-task-button btn-small waves-effect waves-light" }, "Add Task")
+
 
 const taskListeners = {
   initialStatus(tasks) {
@@ -19,6 +27,11 @@ const taskListeners = {
       console.log(e.target)
       if (e.target.classList.contains("delete-button")) {
         console.log("delete")
+        clear(".task__list--container")
+        API.deleteData("tasks", e.target.parentElement.id.split("-")[1]).then((response) => {
+          console.log(response)
+          taskListeners.renderTasks()
+        })
       }
       if (e.target.classList.contains("save-button")) {
         console.log("save")
@@ -31,63 +44,37 @@ const taskListeners = {
       }
       if (e.target.classList.contains("add-task-button")) {
         console.log("add task")
+        document.querySelector("#formContainer").classList.remove("hide")
+        document.querySelector(".add-task-button").classList.add("hide")
       }
       if (e.target.classList.contains("clear")) {
         console.log("close form")
+        document.querySelector("#formContainer").classList.toggle("hide")
+        document.querySelector(".add-task-button").classList.toggle("hide")
       }
     })
   },
 
-  // addStatusListeners() {
-  //   document.querySelectorAll(".status-radio").forEach((radio) => {
-  //     radio.addEventListener("click", (e) => {
-  //       console.log("change status", e)
-  //       // TODO: patch
-  //     })
-  //   })
-  // },
+  renderTasks() {
+    showTaskFormBtn.render(".main-container")
+    document.querySelector(".add-task-button").classList.remove("hide")
 
-  // addDeleteListener() {
-  //   document.querySelectorAll(".delete-button").forEach((btn) => {
-  //     btn.addEventListener("click", (e) => {
-  //       API.deleteData("tasks", e.target.parentElement.id.split("-")[1]).then((response) => {
-  //         console.log(response)
-  //       })
-  //     })
-  //   })
-  // },
-
-  // addEditListener() {
-  //   document.querySelectorAll(".edit-button").forEach((btn) => {
-  //     btn.addEventListener("click", (e) => {
-  //       console.log("edit", e)
-  //       // TODO: edit in place
-  //     })
-  //   })
-  // },
-
-  // addSaveListener() {
-  //   document.querySelectorAll(".save-button").forEach((btn) => {
-  //     btn.addEventListener("click", (e) => {
-  //       console.log("save", e)
-  //       // TODO: patch
-  //     })
-  //   })
-  // },
-
-  // addAddTaskListener() {
-  //   document.querySelector(".add-task-button").addEventListener("click", (e) => {
-  //     document.querySelector("#formContainer").classList.toggle("hide")
-  //     document.querySelector(".add-task-button").classList.add("hide")
-  //   })
-  // },
-
-  // addCloseFormListener() {
-  //   document.querySelector(".clear").addEventListener("click", () => {
-  //     document.querySelector("#formContainer").classList.toggle("hide")
-  //     document.querySelector(".add-task-button").classList.toggle("hide")
-  //   })
-  // }
+    collectonContainer.render(".main-container")
+    API.getData(`tasks?userId=${userSession.getUser()}`).then((tasks) => {
+      let uniqueTask = 0
+      tasks.forEach((task) => {
+        let newTask = new Task(task)
+        newTask.buildTaskElement(".task__list--container", uniqueTask)
+        uniqueTask += 1
+      })
+      document.querySelector("#formContainer").classList.add("hide")
+      taskIcon.render("#formContainer")
+      taskListeners.initialStatus(tasks)
+      document.querySelectorAll(".save-button").forEach((btn) => {
+        btn.classList.add("hide")
+      })
+    })
+  }
 }
 
 export default taskListeners

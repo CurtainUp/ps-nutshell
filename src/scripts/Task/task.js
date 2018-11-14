@@ -29,16 +29,16 @@ class Task {
       name: `statusRadio${uniqueTaskStatus}`,
       type: "radio"
     })
-    let statusSpan = new DOMComponent("span", { classList: "status__radio--container container" }, "To Do")
-    let statusLabel = new DOMComponent("label", { classList: "container" }, statusInput, statusSpan)
-    let statusRadioContainer = new DOMComponent("p", { classList: "container" }, statusLabel)
+    // let statusSpan = new DOMComponent("span", { classList: "status__radio--container container" }, "To Do")
+    // let statusLabel = new DOMComponent("label", { classList: "container" }, statusInput, statusSpan)
+    // let statusRadioContainer = new DOMComponent("p", { classList: "container" }, statusLabel)
 
     let statusInput2 = new DOMComponent("input", {
       classList: "container status-radio status-radio1",
       name: `statusRadio${uniqueTaskStatus}`,
       type: "radio"
     })
-    let statusSpan2 = new DOMComponent("span", { classList: "status__radio--container container" }, "Doing")
+    let statusSpan2 = new DOMComponent("span", { classList: "status__radio--container container" }, "In Progress")
     let statusLabel2 = new DOMComponent("label", { classList: "container" }, statusInput2, statusSpan2)
     let statusRadioContainer2 = new DOMComponent("p", { classList: "container" }, statusLabel2)
 
@@ -51,7 +51,7 @@ class Task {
     let statusLabel3 = new DOMComponent("label", { classList: "container" }, statusInput3, statusSpan3)
     let statusRadioContainer3 = new DOMComponent("p", { classList: "container" }, statusLabel3)
 
-    let statusRadioCollection = new DOMComponent("div", { classList: "container" }, statusRadioContainer, statusRadioContainer2, statusRadioContainer3)
+    let statusRadioCollection = new DOMComponent("div", { classList: "container" }, statusRadioContainer2, statusRadioContainer3)
     let taskEdit = new DOMComponent("button", { classList: "edit-button btn-small waves-effect waves-light" }, "Edit")
     let taskSave = new DOMComponent("button", { classList: "save-button btn-small waves-effect waves-light" }, "Save")
     let taskDelete = new DOMComponent("button", { classList: "delete-button btn-small waves-effect waves-light" }, "Delete")

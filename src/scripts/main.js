@@ -10,17 +10,17 @@ import taskPage from "./Task/taskOutput"
 // userSession.logOutUser()
 
 
-if (window.sessionStorage.length === 0) {
-  landingPage()
-} else {
-  API.getData(`users/${userSession.getUser()}`).then((users) => {
-    welcomePage(users.displayName)
-    let navButtons = document.querySelectorAll(".hide")
-    navButtons.forEach((item) => { item.className = "" })
-  })
-}
+// if (window.sessionStorage.length === 0) {
+//   landingPage()
+// } else {
+//   API.getData(`users/${userSession.getUser()}`).then((users) => {
+//     welcomePage(users.displayName)
+//     let navButtons = document.querySelectorAll(".hide")
+//     navButtons.forEach((item) => { item.className = "" })
+//   })
+// }
 
-navListeners()
+// navListeners()
 
 userSession.logInUser(1)
 taskPage()
