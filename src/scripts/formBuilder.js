@@ -68,19 +68,19 @@ function buildFormElement(inputType, id, labelText) {
     let input
 
     if (inputType === "select") {
-      input = new DOMComponent("select", {name: id, id: id, required: true})
+      input = new DOMComponent("select", {name: id, id: id, required: true, className: "validate"})
     } else if (inputType === "textarea") {
-      input = new DOMComponent("textarea", {name: id, id: id, required: true})
+      input = new DOMComponent("textarea", {name: id, id: id, required: true, className: "validate"})
     } else if (inputType === "submit") {
       input = new DOMComponent("button", {type: inputType, id: id, className: "btn-large waves-effect waves-light"}, labelText)
     } else if (inputType === "button") {
       input = new DOMComponent("button", {className: "btn-large waves-effect waves-light", id: id}, labelText)
     } else {
-      input = new DOMComponent("input", {type: inputType, id: id, name: id, required: true})
+      input = new DOMComponent("input", {type: inputType, id: id, name: id, required: true, className: "validate"})
     }
 
     // Combine the label and input into a single component and return it in a div.row
-    let formElement = new DOMComponent("div", {className: "input-field col s12"}, label, input)
+    let formElement = new DOMComponent("div", {className: "input-field col s12"}, input, label)
     if (inputType === "submit") {
       formElement = new DOMComponent("div", {className:"input-field col s4"}, input)
     }

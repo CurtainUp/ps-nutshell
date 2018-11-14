@@ -15,8 +15,9 @@ class Row extends DOMComponent {
   }
 }
 
-const header = new DOMComponent("h1", {classList: "header"}, "Welcome to Penguin Nutshell")
-const headerRow = new Row({classList: "row center"}, header)
+const header = new DOMComponent("h1", {classList: "header"}, "Welcome to Waddle")
+const subHead = new DOMComponent("h4", {classList: "header"}, "Your penguin life... in a nutshell")
+const headerRow = new Row({classList: "row center"}, header, subHead)
 const registerBtn = new DOMComponent("a", {classList: "btn-large waves-effect waves-light", id: "welcomeRegisterBtn"}, "Register")
 const saveBtn = new DOMComponent("a", {classList: "btn-large waves-effect waves-light", id: "welcomeLoginBtn"}, "Login")
 const buttonRow = new Row({classList: "row center"}, registerBtn, saveBtn)

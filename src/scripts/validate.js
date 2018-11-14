@@ -5,14 +5,15 @@
 import API from "./api"
 import userSession from "./sessionStorage"
 
-
 const validate = {
   newUser(entryObject) {
     API.getData(`users?email=${entryObject.email}`)
       .then((user) => {
         if (user.length === 0) {
           API.saveData("users", entryObject)
-            .then((user) => { userSession.logInUser(user.id) })
+            .then((user) => {
+              userSession.logInUser(user.id)
+            })
         } else {
           alert("Oops! This email is already in use. Please use a different email, or return to the login page if you already have an account with us.")
         }
@@ -23,6 +24,7 @@ const validate = {
       .then((user) => {
         if (user[0] && user[0].password === entryObject.password) {
           userSession.logInUser(user[0].id)
+          // document.querySelector("#loginForm").reset()
         } else {
           alert("Incorrect email/password-- please try again. If you're new here, please Register. ")
         }
