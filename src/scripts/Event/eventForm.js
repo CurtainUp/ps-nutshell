@@ -50,14 +50,17 @@ const eventFormBuilder = {
   },
   eventFormListener() {
     let button = document.querySelector("#saveBtn")
-    button.addEventListener("click", e => {
-      e.preventDefault()
-      let eventObject = this.formInput()
-      API.saveData("events", eventObject).then(() => {eventPage()})
-      document.querySelector("#formContainer").classList.add("hide")
-      document.querySelector("#addEvent").classList.remove("hide")
-      this.resetForm()
-    })
+    if (!button.hasAttribute("data-listener")) {
+      button.setAttribute("data-listener", "true")
+      button.addEventListener("click", e => {
+        e.preventDefault()
+        let eventObject = this.formInput()
+        API.saveData("events", eventObject).then(() => { eventPage() })
+        document.querySelector("#formContainer").classList.add("hide")
+        document.querySelector("#addEvent").classList.remove("hide")
+        this.resetForm()
+      })
+    }
   },
   formInput() {
     const dateValue = document.getElementById("datepicker-main").value
@@ -72,7 +75,7 @@ const eventFormBuilder = {
     return eventObject
   },
   resetForm() {
-    document.getElementById("datepicker").value = ""
+    document.getElementById("datepicker-main").value = ""
     document.getElementById("name").value = ""
     document.getElementById("location").value = ""
   },
