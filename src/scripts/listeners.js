@@ -46,13 +46,9 @@ let navListeners = () => {
   })
   newsNav.addEventListener("click", () => {
     clear()
-<<<<<<< HEAD
     loadNews()
-=======
-    mainContainer.innerHTML = "<h>Your News</h>"
     document.querySelectorAll("nav li").forEach(el => el.classList.remove("teal"))
     newsNav.parentNode.classList.add("teal")
->>>>>>> master
   })
   logoutNav.addEventListener("click", () => {
     clear()
