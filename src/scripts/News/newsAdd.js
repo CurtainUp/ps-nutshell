@@ -37,9 +37,9 @@ const addFunctions = {
   newArticleListener() {
     let newArticleBtn = document.querySelector("button.article-button")
     newArticleBtn.addEventListener("click", () => {
-      let newsEditor = new Form("Add Article", "news-editor", newsInputs.articleInputs)
-      let newsEdit = newsEditor.build()
-      newsEdit.render(".form-container")
+      let newsCreator = new Form("Add Article", "news-editor", newsInputs.articleInputs)
+      let newsCreate = newsCreator.build()
+      newsCreate.render(".form-container")
       newArticleBtn.classList.add("hide")
       addNewArticle()
     })
