@@ -23,16 +23,14 @@ const editEventForm = new Form("", "editFormContainer", editInputs).build()
 
 const mainContainer = document.querySelector(".main-container")
 
-const currentUser = userSession.getUser()
+
 
 
 
 
 const eventFormBuilder = {
   eventButtonRender() {
-    // const Icon = new DOMComponent("i", { className: "material-icons", textContent: "add", id: "addEvent" })
     const Anchor = new DOMComponent("a", { className: "waves-effect waves-light btn-large", textContent: "Add New Event", id: "addEvent" })
-    // const H6 = new DOMComponent("h6", { id: "addEvent", textContent: "Add New Event" }, Anchor)
     Anchor.render(".main-container")
   },
   eventButtonListener() {
@@ -63,6 +61,7 @@ const eventFormBuilder = {
     }
   },
   formInput() {
+    const currentUser = userSession.getUser()
     const dateValue = document.getElementById("datepicker-main").value
     const nameValue = document.getElementById("name").value
     const locationValue = document.getElementById("location").value
@@ -84,6 +83,7 @@ const eventFormBuilder = {
     document.getElementById("datepicker-edit").setAttribute("class", "datepicker")
   },
   editFormInput() {
+    const currentUser = userSession.getUser()
     const dateValue = document.getElementById("datepicker-edit").value
     const nameValue = document.getElementById("name-edit").value
     const locationValue = document.getElementById("location-edit").value
