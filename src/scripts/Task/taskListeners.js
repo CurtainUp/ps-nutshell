@@ -35,6 +35,7 @@ const taskListeners = {
       if (e.target.classList.contains("save-button")) {
         clear(".task__list--container")
 
+
         e.target.classList.add("hide")
         e.target.previousSibling.classList.remove("hide")
 
@@ -53,6 +54,24 @@ const taskListeners = {
         e.target.classList.add("hide")
         e.target.nextSibling.classList.remove("hide")
         let title = e.target.previousSibling.previousSibling.previousSibling
+        console.log(title)
+        title.addEventListener("keypress", (e)=> {
+          if (e.key === "Enter"){
+            clear(".task__list--container")
+            e.target.classList.add("hide")
+            e.target.previousSibling.classList.remove("hide")
+            console.log(e)
+            title.setAttribute("contenteditable", false)
+
+            let nameObj = { name: title.textContent }
+            let nameId = e.target.parentElement.id.split("-")[1]
+
+            API.editData("tasks", nameObj, nameId).then((response) => {
+              taskListeners.renderTasks()
+            })
+          }
+        })
+
         title.setAttribute("contenteditable", true)
         title.focus()
       }
