@@ -35,18 +35,19 @@ function loadMessages() {
       const collection = messages(messagesArray)
       const msgsRow = new Row(collection)
       const icon = new DOMComponent("i", {classList: "material-icons prefix"}, "message")
-      const textField = new DOMComponent("input", {type: "text", id: "text"})
+      const textField = new DOMComponent("input", {type: "text", id: "text", classList: "validate", required: "true"})
       const label = new DOMComponent("label", {htmlFor: "text"}, "Send a Message")
       const inputField = new DOMComponent("div", {classList: "input-field col s11"}, icon, textField, label)
 
       const submitIcon = new DOMComponent("i", {classList: "material-icons", id:"saveMsg"}, "send")
       const submit = new DOMComponent("a", {classList:"btn-floating pulse waves-effect waves-light right"}, submitIcon)
       const submitWrap = new DOMComponent("div", {classList: "col s1"}, submit)
-      const msgForm = new DOMComponent("div", {classList: "row valign-wrapper", id: "msgForm"}, inputField, submitWrap)
+      const msgForm = new DOMComponent("form", {classList: "row valign-wrapper", id: "msgForm"}, inputField, submitWrap)
 
       const section = new DOMComponent("section", {classList: "messages container"}, header, msgsRow, msgForm)
 
       section.render(".main-container")
+
       msgFormListener()
       editMsg.addListeners()
     })

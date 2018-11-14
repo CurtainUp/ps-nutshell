@@ -19,14 +19,15 @@ function newMessage(msgObj) {
 function msgFormListener() {
   document.querySelector("#saveMsg").addEventListener("click", e => {
     e.preventDefault()
-
-    let msgObj = {
-      text: document.querySelector("input#text").value,
-      userId: userSession.getUser(),
-      isEdited: false,
-      timestamp: new Date()
+    if(document.querySelector("#msgForm").checkValidity()) {
+      let msgObj = {
+        text: document.querySelector("input#text").value,
+        userId: userSession.getUser(),
+        isEdited: false,
+        timestamp: new Date()
+      }
+      newMessage(msgObj)
     }
-    newMessage(msgObj)
   })
 }
 
