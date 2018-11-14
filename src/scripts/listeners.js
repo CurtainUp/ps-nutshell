@@ -3,6 +3,7 @@
   purpose: Event listeners for section navigation
 */
 import clear from "./clear"
+import loadMessages from "./Message/msgOutput"
 import welcomePage from "./login/welcome"
 import API from "./api"
 import userSession from "./sessionStorage"
@@ -26,7 +27,7 @@ let navListeners = () => {
   })
   chatNav.addEventListener("click", () => {
     clear()
-    mainContainer.innerHTML = "<h>Your Chat</h>"
+    loadMessages()
   })
   todoNav.addEventListener("click", () => {
     clear()

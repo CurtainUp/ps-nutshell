@@ -16,4 +16,5 @@ if (window.sessionStorage.length === 0) {
     navButtons.forEach((item) => { item.className = "" })
   })
 }
+
 navListeners()

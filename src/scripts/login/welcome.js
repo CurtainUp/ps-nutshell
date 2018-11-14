@@ -1,7 +1,7 @@
 
 import DOMComponent from "nss-domcomponent"
 import clear from "../clear"
-
+import loadMessages from "./../Message/msgOutput"
 
 const mainContainer = document.querySelector(".main-container")
 
@@ -35,7 +35,7 @@ let welcomePage = (displayName) => {
   let chatNav = document.getElementById("chatNavBtn")
   chatNav.addEventListener("click", () => {
     clear()
-    mainContainer.innerHTML = "<h>Your Chat</h>"
+    loadMessages()
   })
 
   let toDoNav = document.getElementById("toDoNavBtn")
