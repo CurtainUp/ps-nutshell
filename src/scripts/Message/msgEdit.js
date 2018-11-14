@@ -63,19 +63,22 @@ const editMsg = {
   // Posts the edited message to the database and then reloads Messages
   saveEdit(e) {
     // Get to the message wrapper
-
     let message = e.target.parentNode.parentNode.parentNode.parentNode
-    let id = message.id.split("-")[1]
-    let messageObj = {
-      text: message.querySelector("#message__input").value,
-      isEdited: true
-    }
 
-    API.editData("messages", messageObj, id)
+    // Check that field is not empty before patching database
+    if (message.querySelector("#message__input").checkValidity()) {
+      let id = message.id.split("-")[1]
+      let messageObj = {
+        text: message.querySelector("#message__input").value,
+        isEdited: true
+      }
+
+      API.editData("messages", messageObj, id)
       .then(() => {
         clear()
         loadMessages()
       })
+    }
   }
 }
 
