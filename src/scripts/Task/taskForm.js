@@ -22,7 +22,15 @@ let renderTaskForm = () => {
   let saveTaskBtn = document.querySelector("#saveTaskBtn")
   saveTaskBtn.setAttribute("formnovalidate", true)
   document.querySelector("#name").classList.add("input-field")
-  document.querySelector("#dueBy").classList.add("input-field")
+  let dueByDate = document.querySelector("#dueBy")
+
+  if (!dueByDate.hasAttribute("data-listener")) {
+    dueByDate.addEventListener("click", (e) => {
+      dueByDate.setAttribute("data-listener", "true")
+      M.Datepicker.init(dueByDate, { autoClose: true, format: "yyyy-mm-dd" })
+    })
+  }
+
 
   if (!saveTaskBtn.hasAttribute("data-listener")) {
     saveTaskBtn.setAttribute("data-listener", "true")
@@ -31,6 +39,9 @@ let renderTaskForm = () => {
       let taskObj = getFormValues(e.target.parentNode.parentNode.parentNode)
       taskObj.status = 1
       taskObj.userId = userSession.getUser()
+      dueByDate.classList.add("input-field")
+
+
 
       if (taskObj.name !== "" && taskObj.dueBy != "") {
         API.saveData("tasks", taskObj).then((response) => {
