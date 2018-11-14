@@ -7,6 +7,16 @@ import Form from "../formBuilder"
 import newsInputs from "./newsInputs"
 import API from "../api";
 import getFormValues from "../getFormValues"
+import loadNews from "./newsOutput";
+
+function addNewArticle() {
+  let saveArticleBtn = document.querySelector("#formSubmit")
+  saveArticleBtn.addEventListener("click", () => {
+    // ADD TIMESTAMP ON CLICK
+    let articleInfo = getFormValues(document.querySelector("form"))
+    API.saveData("news", articleInfo)
+  })
+}
 
 const addFunctions = {
   // Listener on "Add Article" button that opens form to add new article
@@ -17,11 +27,10 @@ const addFunctions = {
       let newsEdit = newsEditor.build()
       newsEdit.render("article.container")
       newArticleBtn.classList.add("hide")
+      addNewArticle()
+      loadNews()
     })
   }
-  // addNewArticle() {
-  //   API.saveData()
-  // }
 }
 
 export default addFunctions

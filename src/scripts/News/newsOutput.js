@@ -33,8 +33,8 @@ function grabUserArticles() {
 function loadNews() {
   let createArticleBtn = new DOMComponent("button", { classList: "article-button btn-large waves-effect waves-light" }, "Add Article")
   createArticleBtn.render("article.container")
-  addFunctions.newArticleListener()
   grabUserArticles()
+  addFunctions.newArticleListener()
   // --
   // let testNews = new News("Waddle News", "all the happenings at Waddle HQ", "November 10, 2018", "https://www.vox.com")
   // let testNews2 = new News("Second Time Around", "People want MORE Waddle", "November 11, 2018", "https://www.vox.com")

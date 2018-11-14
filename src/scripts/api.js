@@ -15,6 +15,7 @@ const API = {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(entryObject)
+
     })
     .then(response => response.json())
   },
