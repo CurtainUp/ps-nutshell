@@ -27,24 +27,34 @@ let navListeners = () => {
   chatNav.addEventListener("click", () => {
     clear()
     loadMessages()
+    document.querySelector("nav li").classList.remove("teal")
+    chatNav.parentNode.classList.add("teal")
   })
   todoNav.addEventListener("click", () => {
     clear()
     mainContainer.innerHTML = "<h>Your To Do List</h>"
+    document.querySelectorAll("nav li").forEach(el => el.classList.remove("teal"))
+    todoNav.parentNode.classList.add("teal")
   })
   eventsNav.addEventListener("click", () => {
     clear()
     eventPage()
     eventFormBuilder.eventFormListener()
+    document.querySelectorAll("nav li").forEach(el => el.classList.remove("teal"))
+    eventsNav.parentNode.classList.add("teal")
   })
   newsNav.addEventListener("click", () => {
     clear()
     mainContainer.innerHTML = "<h>Your News</h>"
+    document.querySelectorAll("nav li").forEach(el => el.classList.remove("teal"))
+    newsNav.parentNode.classList.add("teal")
   })
   logoutNav.addEventListener("click", () => {
     clear()
     userSession.logOutUser()
     landingPage()
+    document.querySelectorAll("nav li").forEach(el => el.classList.remove("teal"))
+
   })
   logo.addEventListener("click", () => {
     // Only load welcome page if a user is logged in.
@@ -52,6 +62,8 @@ let navListeners = () => {
       clear()
       welcomePage()
     }
+    document.querySelectorAll("nav li").forEach(el => el.classList.remove("teal"))
+
   })
 }
 

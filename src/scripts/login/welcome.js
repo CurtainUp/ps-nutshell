@@ -33,18 +33,21 @@ let welcomePage = () => {
     let chatNav = document.getElementById("chatNavBtn")
     chatNav.addEventListener("click", () => {
       clear()
+      document.querySelector("nav #chat").parentNode.classList.add("teal")
       loadMessages()
     })
 
     let toDoNav = document.getElementById("toDoNavBtn")
     toDoNav.addEventListener("click", () => {
       clear()
+      document.querySelector("nav #todo").parentNode.classList.add("teal")
       mainContainer.innerHTML = "<h>Your To Do List</h>"
     })
 
     let eventsNav = document.getElementById("eventsNavBtn")
     eventsNav.addEventListener("click", () => {
       clear()
+      document.querySelector("nav #events").parentNode.classList.add("teal")
       eventPage()
       eventFormBuilder.eventFormListener()
     })
@@ -52,6 +55,7 @@ let welcomePage = () => {
     let newsNav = document.getElementById("newsNavBtn")
     newsNav.addEventListener("click", () => {
       clear()
+      document.querySelector("nav #news").parentNode.classList.add("teal")
       mainContainer.innerHTML = "<h>Your News</h>"
     })
   })
