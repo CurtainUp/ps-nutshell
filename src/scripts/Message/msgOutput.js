@@ -30,7 +30,7 @@ function messages(messagesArray) {
 function loadMessages() {
   return API.getData("messages?_expand=user")
     .then(messagesArray => {
-      const header = new Row(new DOMComponent("h2", {classList: "header"}, "Chat with your Waddle"))
+      const header = new Row(new DOMComponent("h2", {classList: "header center"}, "Chat with your Waddle"))
 
       const collection = messages(messagesArray)
       const msgsRow = new Row(collection)
