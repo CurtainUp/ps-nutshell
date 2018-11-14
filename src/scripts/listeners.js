@@ -3,6 +3,8 @@
   purpose: Event listeners for section navigation
 */
 import clear from "./clear"
+import eventPage from "./Event/eventOutput"
+import eventFormBuilder from "./Event/eventForm"
 import loadMessages from "./Message/msgOutput"
 import taskPage from "./Task/taskOutput"
 import API from "./api"
@@ -35,7 +37,8 @@ let navListeners = () => {
   })
   eventsNav.addEventListener("click", () => {
     clear()
-    mainContainer.innerHTML = "<h>Your Events</h>"
+    eventPage()
+    eventFormBuilder.eventFormListener()
   })
   newsNav.addEventListener("click", () => {
     clear()
