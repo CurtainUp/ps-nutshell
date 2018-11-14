@@ -20,7 +20,6 @@ const eventPage = () => {
   let instances = M.Datepicker.init(elems, { autoClose: true, format: "yyyy-mm-dd" });
   document.querySelector("#formContainer").setAttribute("class", "hide")
   domEvents.renderEvents().then(() => {domEvents.editListeners()})
-  // eventFormBuilder.eventFormListener()
   eventFormBuilder.eventButtonRender()
   eventFormBuilder.eventButtonListener()
 }
