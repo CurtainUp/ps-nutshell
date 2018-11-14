@@ -11,7 +11,7 @@ import userSession from "./sessionStorage"
 import landingPage from "./login/landing";
 
 // Grab nav elements
-const friendsNav = document.getElementById("friends")
+
 const chatNav = document.getElementById("chat")
 const todoNav = document.getElementById("todo")
 const eventsNav = document.getElementById("events")
@@ -23,10 +23,7 @@ const mainContainer = document.querySelector(".main-container")
 
 // adds event listeners to each nav element
 let navListeners = () => {
-  friendsNav.addEventListener("click", () => {
-    clear()
-    mainContainer.innerHTML = "<h>Your Friends</h>"
-  })
+
   chatNav.addEventListener("click", () => {
     clear()
     loadMessages()
