@@ -6,6 +6,7 @@ import userSession from "./../sessionStorage"
 import API from "./../api"
 import eventPage from "./../Event/eventOutput"
 import eventFormBuilder from "./../Event/eventForm"
+import loadNews from "../News/newsOutput";
 
 const mainContainer = document.querySelector(".main-container")
 
@@ -56,7 +57,7 @@ let welcomePage = () => {
     newsNav.addEventListener("click", () => {
       clear()
       document.querySelector("nav #news").parentNode.classList.add("teal")
-      mainContainer.innerHTML = "<h>Your News</h>"
+      loadNews()
     })
   })
 }
