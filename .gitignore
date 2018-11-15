@@ -3,3 +3,4 @@ src/lib/node_modules
 .DS_Store
 public/*.js
 .vscode
+News/newsEdit.js
