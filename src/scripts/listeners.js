@@ -8,7 +8,6 @@ import eventPage from "./Event/eventOutput"
 import eventFormBuilder from "./Event/eventForm"
 import loadMessages from "./Message/msgOutput"
 import taskPage from "./Task/taskOutput"
-import API from "./api"
 import welcomePage from "./login/welcome"
 import userSession from "./sessionStorage"
 import landingPage from "./login/landing";
@@ -22,7 +21,6 @@ const newsNav = document.getElementById("news")
 const logoutNav = document.getElementById("logout")
 const logo = document.querySelector(".brand-logo")
 
-const mainContainer = document.querySelector(".main-container")
 
 // adds event listeners to each nav element
 let navListeners = () => {

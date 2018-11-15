@@ -4,10 +4,21 @@ import userSession from "./../sessionStorage"
 import Task from "./task"
 import clear from "../clear";
 
+
+// author of Row extension: Elyse
+class Row extends DOMComponent {
+  constructor(...children) {
+    super("div", { className: "row center" }, ...children)
+  }
+}
+
+
+
 let taskIcon = new DOMComponent("i", { classList: "material-icons circle clear" }, "clear")
 let collectonContainer = new DOMComponent("ul", { classList: "container task__list--container title" }, "My To Do List:")
-let showTaskFormBtn = new DOMComponent("button", { classList: "add-task-button btn-small waves-effect waves-light" }, "Add Task")
-let toDoTitle = new DOMComponent("h2", {className: "toDoTitle title center"}, "My To Do List")
+let showTaskFormBtn = new DOMComponent("button", { classList: "add-task-button center btn-large waves-effect waves-light" }, "Add Task")
+let taskBtnRow = new Row(showTaskFormBtn)
+let toDoTitle = new DOMComponent("h2", { className: "toDoTitle title center" }, "My To Do List")
 
 
 const taskListeners = {
@@ -29,7 +40,7 @@ const taskListeners = {
       collection.addEventListener("click", (e) => {
         if (e.target.classList.contains("delete")) {
           clear(".task__list--container")
-          API.deleteData("tasks", e.target.parentElement.parentElement.parentElement.id.split("-")[1]).then((response) => {
+          API.deleteData("tasks", e.target.parentElement.parentElement.parentElement.id.split("-")[1]).then(() => {
             taskListeners.renderTasks()
           })
         }
@@ -49,7 +60,7 @@ const taskListeners = {
           let nameObj = { name: taskName.textContent }
           let nameId = e.target.parentElement.id.split("-")[1]
 
-          API.editData("tasks", nameObj, nameId).then((response) => {
+          API.editData("tasks", nameObj, nameId).then(() => {
             taskListeners.renderTasks()
           })
         }
@@ -70,7 +81,7 @@ const taskListeners = {
               let nameObj = { name: title.textContent }
               let nameId = e.target.parentElement.id.split("-")[1]
 
-              API.editData("tasks", nameObj, nameId).then((response) => {
+              API.editData("tasks", nameObj, nameId).then(() => {
                 taskListeners.renderTasks()
               })
             }
@@ -86,7 +97,7 @@ const taskListeners = {
             clear(".task__list--container")
             let taskId = e.target.parentElement.parentElement.parentElement.parentElement.id.split("-")[1]
             let progessObj = { status: 2 }
-            API.editData("tasks", progessObj, taskId).then((response) => {
+            API.editData("tasks", progessObj, taskId).then(() => {
               taskListeners.renderTasks()
             })
           }
@@ -107,9 +118,9 @@ const taskListeners = {
   },
 
   renderTasks() {
-    showTaskFormBtn.render(".main-container")
-    document.querySelector(".add-task-button").classList.remove("hide")
     toDoTitle.render(".main-container")
+    taskBtnRow.render(".main-container")
+    document.querySelector(".add-task-button").classList.remove("hide")
 
     collectonContainer.render(".main-container")
     API.getData(`tasks?userId=${userSession.getUser()}&status=1`).then((tasks) => {
