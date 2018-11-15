@@ -6,14 +6,13 @@
 import Form from "./../formBuilder"
 import API from "./../api"
 import DOMComponent from "nss-domcomponent"
-import domEvents from "./event"
 import eventPage from "./eventOutput"
 import userSession from "./../sessionStorage"
 
 //Row class by Elyse
 class Row extends DOMComponent {
   constructor(...children) {
-    super("div", {className:"row center"}, ...children)
+    super("div", { className: "row center" }, ...children)
   }
 }
 
@@ -31,7 +30,7 @@ const editEventForm = new Form("", "editFormContainer", editInputs).build()
 
 const mainContainer = document.querySelector(".main-container")
 
-let Header = new DOMComponent("h2", {classList: "header center"}, "Egg-citing Events!")
+let Header = new DOMComponent("h2", { classList: "header center" }, "Egg-citing Events!")
 
 
 
