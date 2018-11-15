@@ -1,4 +1,8 @@
-// Skeleton used to create all News related forms
+/*
+  author(s): Elyse
+  purpose: Inputs used to create all News related forms
+*/
+
 let newsInputs = {
   // Array used to build Add Article form
   articleInputs: [
