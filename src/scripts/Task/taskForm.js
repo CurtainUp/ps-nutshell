@@ -25,10 +25,8 @@ let renderTaskForm = () => {
   let dueByDate = document.querySelector("#dueBy")
 
   if (!dueByDate.hasAttribute("data-listener")) {
-    dueByDate.addEventListener("click", (e) => {
-      dueByDate.setAttribute("data-listener", "true")
-      M.Datepicker.init(dueByDate, { autoClose: true, format: "yyyy-mm-dd" })
-    })
+    dueByDate.setAttribute("data-listener", "true")
+    let pickDueDate = M.Datepicker.init(dueByDate, { autoClose: true, format: "yyyy-mm-dd" })
   }
 
 
@@ -37,6 +35,7 @@ let renderTaskForm = () => {
     saveTaskBtn.addEventListener("click", (e) => {
       e.preventDefault()
       let taskObj = getFormValues(e.target.parentNode.parentNode.parentNode)
+      taskObj.dueBy = dueByDate.value
       taskObj.status = 1
       taskObj.userId = userSession.getUser()
       dueByDate.classList.add("input-field")

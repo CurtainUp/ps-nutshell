@@ -9,9 +9,12 @@ import clear from "../clear";
 
 
 
+
+
 const taskPage = () => {
   clear()
   renderTaskForm()
+
   taskListeners.renderTasks()
   taskListeners.addTaskListeners()
 }
