@@ -20,6 +20,7 @@ let renderTaskForm = () => {
   taskForm.render(".main-container")
 
   let saveTaskBtn = document.querySelector("#saveTaskBtn")
+  saveTaskBtn.nextElementSibling.classList.add("hide")
   saveTaskBtn.setAttribute("formnovalidate", true)
   document.querySelector("#name").classList.add("input-field")
   let dueByDate = document.querySelector("#dueBy")
@@ -35,24 +36,22 @@ let renderTaskForm = () => {
     saveTaskBtn.addEventListener("click", (e) => {
       e.preventDefault()
       let taskObj = getFormValues(e.target.parentNode.parentNode.parentNode)
-      taskObj.dueBy = dueByDate.value
-      taskObj.status = 1
-      taskObj.userId = userSession.getUser()
-      dueByDate.classList.add("input-field")
+      if (document.querySelector("#name").checkValidity() && dueByDate.checkValidity()) {
+        taskObj.dueBy = dueByDate.value
+        taskObj.status = 1
+        taskObj.userId = userSession.getUser()
+        dueByDate.classList.add("input-field")
 
-
-
-      if (taskObj.name !== "" && taskObj.dueBy != "") {
-        API.saveData("tasks", taskObj).then((response) => {
-          document.querySelector("#formContainer").classList.toggle("hide")
-          document.querySelector(".add-task-button").classList.toggle("hide")
-          document.querySelector("#name").value = ""
-          document.querySelector("#dueBy").value = ""
-          clear(".task__list--container")
-          taskListeners.renderTasks()
-        })
-      } else {
-        alert("Oops! Please complete task fields")
+        if (taskObj.name !== "" && taskObj.dueBy != "") {
+          API.saveData("tasks", taskObj).then((response) => {
+            document.querySelector("#formContainer").classList.toggle("hide")
+            document.querySelector(".add-task-button").classList.toggle("hide")
+            document.querySelector("#name").value = ""
+            document.querySelector("#dueBy").value = ""
+            clear(".task__list--container")
+            taskListeners.renderTasks()
+          })
+        }
       }
     })
   }
