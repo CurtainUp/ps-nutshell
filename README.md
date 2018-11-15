@@ -217,10 +217,10 @@ Open your preferred browser and go to:
 # Enjoy Waddle, Have Fun, Stay Icy
 
 ## Penguin Sweater
-[Sebastian Civarolo](https://github.com/scivarolo)
-[Rachel Daniel](https://github.com/racheldaniel)
-[Elyse Dawson](https://github.com/CurtainUp)
-[Nolan Little](https://github.com/Nolan-Little)
+- [Sebastian Civarolo](https://github.com/scivarolo)
+- [Rachel Daniel](https://github.com/racheldaniel)
+- [Elyse Dawson](https://github.com/CurtainUp)
+- [Nolan Little](https://github.com/Nolan-Little)
 
 #### Easter Egg
-See line 81 in styles.css for a waddlin' good time!
+See line 81 in <b>styles.css</b> for a waddlin' good time!
