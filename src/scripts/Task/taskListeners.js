@@ -4,10 +4,21 @@ import userSession from "./../sessionStorage"
 import Task from "./task"
 import clear from "../clear";
 
+
+// author of Row extension: Elyse
+class Row extends DOMComponent {
+  constructor(...children) {
+    super("div", { className: "row center" }, ...children)
+  }
+}
+
+
+
 let taskIcon = new DOMComponent("i", { classList: "material-icons circle clear" }, "clear")
 let collectonContainer = new DOMComponent("ul", { classList: "container task__list--container title" }, "My To Do List:")
-let showTaskFormBtn = new DOMComponent("button", { classList: "add-task-button btn-small waves-effect waves-light" }, "Add Task")
-let toDoTitle = new DOMComponent("h2", {className: "toDoTitle title center"}, "My To Do List")
+let showTaskFormBtn = new DOMComponent("button", { classList: "add-task-button center btn-large waves-effect waves-light" }, "Add Task")
+let taskBtnRow = new Row(showTaskFormBtn)
+let toDoTitle = new DOMComponent("h2", { className: "toDoTitle title center" }, "My To Do List")
 
 
 const taskListeners = {
@@ -107,9 +118,9 @@ const taskListeners = {
   },
 
   renderTasks() {
-    showTaskFormBtn.render(".main-container")
-    document.querySelector(".add-task-button").classList.remove("hide")
     toDoTitle.render(".main-container")
+    taskBtnRow.render(".main-container")
+    document.querySelector(".add-task-button").classList.remove("hide")
 
     collectonContainer.render(".main-container")
     API.getData(`tasks?userId=${userSession.getUser()}&status=1`).then((tasks) => {
