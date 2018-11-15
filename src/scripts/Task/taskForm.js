@@ -35,11 +35,13 @@ let renderTaskForm = () => {
     saveTaskBtn.setAttribute("data-listener", "true")
     saveTaskBtn.addEventListener("click", (e) => {
       e.preventDefault()
-      let taskObj = getFormValues(e.target.parentNode.parentNode.parentNode)
       if (document.querySelector("#name").checkValidity() && dueByDate.checkValidity()) {
-        taskObj.dueBy = dueByDate.value
-        taskObj.status = 1
-        taskObj.userId = userSession.getUser()
+        let taskObj = {
+          name: document.querySelector("#name").value,
+          dueBy: dueByDate.value,
+          status: 1,
+          userId: userSession.getUser()
+        }
         dueByDate.classList.add("input-field")
 
         if (taskObj.name !== "" && taskObj.dueBy != "") {

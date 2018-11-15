@@ -112,7 +112,7 @@ const taskListeners = {
     toDoTitle.render(".main-container")
 
     collectonContainer.render(".main-container")
-    API.getData(`tasks?userId=${userSession.getUser()}`).then((tasks) => {
+    API.getData(`tasks?userId=${userSession.getUser()}&status=1`).then((tasks) => {
       if (document.querySelector(".task__list--container")) {
         clear(".task__list--container")
       }
@@ -128,12 +128,12 @@ const taskListeners = {
       taskListeners.initialStatus(tasks)
 
       // Hide everything that is marked as done
-      let radios = document.querySelectorAll(".status__radio--container")
-      radios.forEach((radio) => {
-        if (radio.previousElementSibling.hasAttribute("checked") && radio.textContent === "Done") {
-          radio.parentElement.parentElement.parentElement.parentElement.parentElement.classList.add("hide")
-        }
-      })
+      // let radios = document.querySelectorAll(".status__radio--container")
+      // radios.forEach((radio) => {
+      //   if (radio.previousElementSibling.hasAttribute("checked") && radio.textContent === "Done") {
+      //     radio.parentElement.parentElement.parentElement.parentElement.parentElement.classList.add("hide")
+      //   }
+      // })
 
       // hide all save buttons for future use
       document.querySelectorAll(".save-button").forEach((btn) => {
