@@ -1,6 +1,6 @@
 /*
   author(s): Rachel
-  purpose: defines a function that builds a single event element
+  purpose: defines an object that contains methods that build a single event element, render all to the page, and add edit, save and delete functionality
 */
 import DOMComponent from "nss-domcomponent"
 import API from "./../api"
@@ -10,7 +10,10 @@ import eventPage from "./eventOutput"
 
 
 
+
+
 const domEvents = {
+  //build object builds a single event object and its children
   buildEvent(object) {
     const IconMain = new DOMComponent("i", { className: "material-icons circle", textContent: "date_range" })
     const Span = new DOMComponent("span", { className: "event grey-text text-darken-1 dateText", textContent: `${object.date}` })
@@ -26,6 +29,7 @@ const domEvents = {
     const Event = new DOMComponent("li", { className: "collection-item avatar", id: `${object.id}` }, IconMain, Span, H5, P, Div)
     return Event
   },
+  //renderEvents takes an array of event objects (from the API) and outputs to the DOM with styling for upcoming event
   renderEvents() {
     const currentUser = userSession.getUser()
     return API.getData(`events?userId=${currentUser}&_sort=date&_order=asc`).then((eventList) => {
@@ -46,6 +50,7 @@ const domEvents = {
 
     })
   },
+  //edit listeners adds event listeners to the edit and delete buttons, renders a form for edit and saves edits
   editListeners() {
     const ul = document.querySelector(".collection")
     ul.addEventListener("click", (e) => {
