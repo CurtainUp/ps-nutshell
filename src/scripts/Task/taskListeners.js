@@ -127,14 +127,6 @@ const taskListeners = {
       taskIcon.render("#formContainer")
       taskListeners.initialStatus(tasks)
 
-      // Hide everything that is marked as done
-      // let radios = document.querySelectorAll(".status__radio--container")
-      // radios.forEach((radio) => {
-      //   if (radio.previousElementSibling.hasAttribute("checked") && radio.textContent === "Done") {
-      //     radio.parentElement.parentElement.parentElement.parentElement.parentElement.classList.add("hide")
-      //   }
-      // })
-
       // hide all save buttons for future use
       document.querySelectorAll(".save-button").forEach((btn) => {
         btn.classList.add("hide")
