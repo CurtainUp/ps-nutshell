@@ -78,6 +78,11 @@
   margin: 30px 0;
 }
 
+/*---------- Events ----------*/
+#addEvent {
+  margin: 30px 0;
+}
+
 /* For a waddlin' good time, uncomment the following! */
 /* *::after {
   content: "🐧"

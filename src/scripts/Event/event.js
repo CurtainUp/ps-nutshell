@@ -10,6 +10,8 @@ import eventPage from "./eventOutput"
 
 
 
+
+
 const domEvents = {
   buildEvent(object) {
     const IconMain = new DOMComponent("i", { className: "material-icons circle", textContent: "date_range" })

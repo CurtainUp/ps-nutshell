@@ -10,6 +10,14 @@ import domEvents from "./event"
 import eventPage from "./eventOutput"
 import userSession from "./../sessionStorage"
 
+//Row class by Elyse
+class Row extends DOMComponent {
+  constructor(...children) {
+    super("div", {className:"row center"}, ...children)
+  }
+}
+
+
 let inputs = [
   ["text", "name", "Event Name"], ["text", "location", "Location"], ["text", "datepicker-main", "Date"], ["submit", "saveBtn", "Save"]
 ]
@@ -23,6 +31,8 @@ const editEventForm = new Form("", "editFormContainer", editInputs).build()
 
 const mainContainer = document.querySelector(".main-container")
 
+let Header = new DOMComponent("h2", {classList: "header center"}, "Egg-citing Events!")
+
 
 
 
@@ -30,8 +40,9 @@ const mainContainer = document.querySelector(".main-container")
 
 const eventFormBuilder = {
   eventButtonRender() {
-    const Anchor = new DOMComponent("a", { className: "waves-effect waves-light btn-large", textContent: "Add New Event", id: "addEvent" })
-    Anchor.render(".main-container")
+    const Anchor = new DOMComponent("a", { className: "waves-effect waves-light btn-large center", textContent: "Add New Event", id: "addEvent" })
+    const HeadRow = new Row(Anchor)
+    HeadRow.render(".main-container")
   },
   eventButtonListener() {
     let button = document.querySelector("#addEvent")
@@ -42,6 +53,7 @@ const eventFormBuilder = {
   },
   eventFormRender() {
     mainContainer.innerHTML = null
+    Header.render(".main-container")
     EventForm.render(".main-container")
     document.getElementById("datepicker-main").setAttribute("class", "datepicker")
     document.querySelector(".header").classList.add("center")
