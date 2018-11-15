@@ -64,18 +64,20 @@ const domEvents = {
         const locationInput = document.querySelector("#location-edit")
         let elems = document.querySelectorAll(".datepicker");
         let instances = M.Datepicker.init(elems, { autoClose: true, format: "yyyy-mm-dd" });
-        dateInput.previousElementSibling.classList.add("active")
-        nameInput.previousElementSibling.classList.add("active")
-        locationInput.previousElementSibling.classList.add("active")
+        dateInput.nextElementSibling.classList.add("active")
+        nameInput.nextElementSibling.classList.add("active")
+        locationInput.nextElementSibling.classList.add("active")
         dateInput.value = date.textContent
         nameInput.value = name.textContent
         locationInput.value = location.textContent
       } else if (e.target.getAttribute("id") === "saveBtn-edit") {
         e.preventDefault()
-        let editedInput = eventFormBuilder.editFormInput()
-        let eventId = button.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.previousElementSibling.getAttribute("id")
-        API.editData("events", editedInput, eventId)
-          .then(() => eventPage())
+        if (button.parentNode.parentNode.parentNode.checkValidity()) {
+          let editedInput = eventFormBuilder.editFormInput()
+          let eventId = button.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.previousElementSibling.getAttribute("id")
+          API.editData("events", editedInput, eventId)
+            .then(() => eventPage())
+        }
       } else if (e.target.classList.contains("delete")) {
         let eventId = button.parentNode.parentNode.parentNode.getAttribute("id")
         API.deleteData("events", eventId)
