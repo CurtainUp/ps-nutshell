@@ -40,7 +40,7 @@ const taskListeners = {
       collection.addEventListener("click", (e) => {
         if (e.target.classList.contains("delete")) {
           clear(".task__list--container")
-          API.deleteData("tasks", e.target.parentElement.parentElement.parentElement.id.split("-")[1]).then((response) => {
+          API.deleteData("tasks", e.target.parentElement.parentElement.parentElement.id.split("-")[1]).then(() => {
             taskListeners.renderTasks()
           })
         }
@@ -60,7 +60,7 @@ const taskListeners = {
           let nameObj = { name: taskName.textContent }
           let nameId = e.target.parentElement.id.split("-")[1]
 
-          API.editData("tasks", nameObj, nameId).then((response) => {
+          API.editData("tasks", nameObj, nameId).then(() => {
             taskListeners.renderTasks()
           })
         }
@@ -81,7 +81,7 @@ const taskListeners = {
               let nameObj = { name: title.textContent }
               let nameId = e.target.parentElement.id.split("-")[1]
 
-              API.editData("tasks", nameObj, nameId).then((response) => {
+              API.editData("tasks", nameObj, nameId).then(() => {
                 taskListeners.renderTasks()
               })
             }
@@ -97,7 +97,7 @@ const taskListeners = {
             clear(".task__list--container")
             let taskId = e.target.parentElement.parentElement.parentElement.parentElement.id.split("-")[1]
             let progessObj = { status: 2 }
-            API.editData("tasks", progessObj, taskId).then((response) => {
+            API.editData("tasks", progessObj, taskId).then(() => {
               taskListeners.renderTasks()
             })
           }

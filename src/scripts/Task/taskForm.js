@@ -1,11 +1,9 @@
-import DOMComponent from "nss-domcomponent"
+
 import Form from "./../formBuilder"
-import getFormValues from "../getFormValues"
 import userSession from "../sessionStorage"
 import clear from "../clear"
 import API from "./../api"
 import taskListeners from "./taskListeners"
-const mainContainer = document.querySelector(".main-container")
 
 let taskInputs = [
   ["text", "name", "To Do"],
@@ -45,7 +43,7 @@ let renderTaskForm = () => {
         dueByDate.classList.add("input-field")
 
         if (taskObj.name !== "" && taskObj.dueBy != "") {
-          API.saveData("tasks", taskObj).then((response) => {
+          API.saveData("tasks", taskObj).then(() => {
             document.querySelector("#formContainer").classList.toggle("hide")
             document.querySelector(".add-task-button").classList.toggle("hide")
             document.querySelector("#name").value = ""

@@ -74,3 +74,16 @@
   margin-right: 15px;
 }
 
+/* -----------tasks------------ */
+
+.task-collection .collection-item {
+  width: 100%;
+  }
+
+  .add-task-button {
+    margin: 30px 0
+  }
+
+  .collection-item .btn-floating {
+    margin-left: 10px;
+  }
