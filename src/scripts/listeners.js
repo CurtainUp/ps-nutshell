@@ -7,6 +7,8 @@ import clear from "./clear"
 import eventPage from "./Event/eventOutput"
 import eventFormBuilder from "./Event/eventForm"
 import loadMessages from "./Message/msgOutput"
+import taskPage from "./Task/taskOutput"
+import API from "./api"
 import welcomePage from "./login/welcome"
 import userSession from "./sessionStorage"
 import landingPage from "./login/landing";
@@ -33,7 +35,7 @@ let navListeners = () => {
   })
   todoNav.addEventListener("click", () => {
     clear()
-    mainContainer.innerHTML = "<h>Your To Do List</h>"
+    taskPage()
     document.querySelectorAll("nav li").forEach(el => el.classList.remove("teal"))
     todoNav.parentNode.classList.add("teal")
   })
